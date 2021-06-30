@@ -43,7 +43,7 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "gh-actions"
-          git remote add alan git@github.com:alanwu4321/ca-public.git
+          git remote add inno git@github.com:innocradle/public.git
           git checkout master
-          git push alan -f
+          git push inno -f
           
