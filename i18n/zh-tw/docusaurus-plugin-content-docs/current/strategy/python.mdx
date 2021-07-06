@@ -84,16 +84,19 @@ class Strategy():
 
 ## 架構
 
-### Candles K 線資訊
+### Trade information
 
-系統呼叫 `strategy` 時，會傳入 `information` 物件，以提供 3 大類資訊： `candles` (K 線資訊), `orders` (訂單），以及 ` orderBooks` (限價訂單簿)．取用方法為:
+系統呼叫 `strategy.trade()` 時，會傳入 `information` 物件，以提供以下資訊： `candles` (K 線資訊), `orders` (訂單）, `availableAssets` (可用資產）, `totalAssets` (所有資產）．取用方法為:
 
 ```python
 information['candles']
+information['history_data']
 information['orders']
-information['orderBooks']
+information['availableAssets']
+information['totalAssets']
 ```
 
+### Candles K 線資訊
 :::note
 Candle 會以 array of object 的形式傳入上次呼叫到此次呼叫的 K 線圖資訊，共含有 6 項資訊 open、close、high、low、volume 和 time，取用方式如下:
 :::
@@ -125,13 +128,13 @@ pair = list(information['candles'][exchange])[0]
 
 ### Assets 資產
 
-策略擁有隨時更新的 `assets` 資產資訊，即當前可進行操作的貨幣，取用方式如下:
+策略擁有隨時更新的 `availableAssets`, `totalAssets` 資產資訊，即當前可進行操作的貨幣，取用方式如下:
 
 ```python
   pair = list(information['candles'][exchange])[0] #BTC-USDT
   target_currency = pair.split('-')[0]  #BTC
   base_currency = pair.split('-')[1]  #USDT
-  # 取得當下擁有的貨幣數量
+  # 取得當下可用的貨幣數量
   base_currency_amount = information['availableAssets'][exchange][base_currency]
   target_currency_amount = information['availableAssets'][exchange][target_currency]
 ```
@@ -149,7 +152,7 @@ pair = list(information['candles'][exchange])[0]
 
 ```
 
-### Order Books 限價訂單簿
+### Order Books 限價訂單簿(deprecated)
 
 Order Books 是在實際交易時才會使用，以觀察當下市場限價單的價格與數量，在回測和競技場比賽都不會用到。(在執行 Backtest 模式中，不會傳入 Order Books 資訊。)
 使用 Order Books 可取得指定交易所中指定交易對的訂單簿資訊，分為 `asks` 買價與 `bids` 賣價兩大類，可取得當下訂單簿的 `price` 價格, `count` 訂單數量和 `amount` 幣數量，取用方式如下:
@@ -291,6 +294,33 @@ CA.log(information['candles'][exchange][pair][0]['volume'])
 ```python
 CA.log('assest usdt: ' + str(self['assets'][exchange]['USDT']))
 CA.log('assest btc: ' + str(self['assets'][exchange]['BTC']))
+```
+
+### `CA.get_orders`
+
+回傳對應的交易紀錄，使用 `dictionary` 紀錄成交訂單資訊
+
+```python
+  exchange: string;
+  pair: string;
+  orderId: number;
+  amount: number;
+  amountFilled: number;
+  price: number;
+  type: string;
+  status: string;
+  margin: boolean;
+```
+
+#### 範例
+
+取回最後 3 筆成交紀錄，並印出價量資訊。
+
+```python
+orders = CA.get_orders('FILLED', 3)
+CA.log('len ' + str(len(orders)))
+for order in orders:
+    CA.log( 'amount: ' + str(order['amount']) + ' ,price: ' + str(order['price']))
 ```
 
 ### `CA.get_last_order_snapshot`
