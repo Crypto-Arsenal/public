@@ -361,14 +361,13 @@ if snap != {}:
 
 #### 範例
 
-以下範例為刪除第一筆掛上的訂單:
+以下範例為刪除所有未成交的訂單:
 
 ```python
-  CA.cancel_order({
-    exchange: 'binance',
-    pair: 'BTC-USDT',
-    orderId: information['orders'][0]
-  })
+  orders = information['orders']
+  for order in orders:
+      if order['status'] == 'NEW':
+          CA.cancel_order(order)
 ```
 
 ### `CA.query_history_data`
