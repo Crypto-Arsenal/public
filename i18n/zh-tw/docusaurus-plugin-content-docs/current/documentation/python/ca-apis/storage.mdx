@@ -1,0 +1,45 @@
+---
+sidebar_position: 12
+sidebar_label: storage
+hide_title: true
+---
+
+import { Highlight } from "../../../../../../../src/components/Highlight.js";
+
+# storage
+
+存取鍵值對 可在策略結束後讀取。
+
+## Input
+
+To set key value
+
+```
+  key: string;
+  value: any;
+```
+
+To access key
+
+```
+  key: string;
+```
+
+## Output
+
+```
+  value: string;
+```
+
+## 範例
+
+```python
+CA.storage('string', 'to the moon 🌙')
+val = CA.storage('string') # to the moon 🌙
+
+CA.storage('int', 131441)
+val = CA.storage('int') # 131441
+
+CA.storage('none', None)
+val = CA.storage('none') # None
+```

@@ -1,0 +1,104 @@
+---
+sidebar_position: 3
+sidebar_label: 策略參數
+hide_title: true
+---
+
+import { Highlight } from "../../../../../../src/components/Highlight.js";
+
+# 策略參數
+
+:::info
+系統預留參數
+:::
+
+### 空單交易 `is_shorting`
+
+使用者透過將 `is_shorting` 參數設定為 true，可開啟空單交易模式
+
+### 手續費 `exchange_fee`
+
+另可調整 `exchange_fee` 以及 `spread`，以設定更嚴格的回測條件
+
+![image2](https://drive.google.com/uc?export=view&id=1IWJoekgYPgQWfxfLv_DZ3KjtTkuIeA4L)
+
+上圖所示，`exchange_fee` 設定為 `0.01`，代表每一筆交易會加收總額 **1%** 費用
+
+:::note
+若沒有設定，預設是 **0.1%** 的手續費
+:::
+
+### 滑價調整 `spread`
+
+`spread` 代表滑點，`0.05` 代表每筆交易價格會有 **5%** 差異
+
+### 自定義參數
+
+透過 `self['OPTION_NAME']` 存取策略參數
+
+You can add some extra arguments for the strategy and change these arguments for every live trade, backtest or simulation.
+For example, if you have the following configuration for a strategy
+
+:::caution
+All arguments are actually stored and parsed as `String` type in your strategy code. **So you have to parse it by your self!**
+:::
+
+#### Type
+
+- Boolean
+
+  A **STRING** that indicates either `true` or `false`
+
+- Number
+
+  A **STRING** that represents a `float` value.
+
+- String
+
+  A **STRING** that holds a `ASCII` string
+
+- Select
+
+  A **STRING** that holds a list of `ASCII` string. Separated by the symbol vertical bar `|`.
+
+#### Example
+
+Suppose you use the following configuration
+
+| Variable | Description  | Type    | Default Value             |
+| -------- | ------------ | ------- | ------------------------- |
+| MyArgA   | true/false   | Boolean | true                      |
+| MyArgB   | a float num  | Number  | 10.9                      |
+| MyArgC   | a ASCII Str  | String  | Hello World!              |
+| MyArgD   | a ASCII list | Select  | OptionA\|OptionB\|OptionC |
+
+:::note
+Only ASCII string is supported currently
+:::
+
+Then you're allowed to tweak these variables to be used in your strategy before trading. `MyArgD` will appear as a list consisting of `OptionA`, `OptionB` and `OptionC`.
+
+![image](https://user-images.githubusercontent.com/5862369/56237500-b3511900-60be-11e9-878d-3e5c2cff4991.png)
+
+:::note
+You can access these arguments by `self['argName']`
+:::
+
+```python
+def trade(self, information):
+    CA.log(self['MyArgA']) # true
+    CA.log(self['MyArgB']) # 10.9
+    CA.log(self['MyArgC']) # Hello World!
+    CA.log(self['MyArgD']) # OptionC
+
+    CA.log(str(self['MyArgA'].__class__)) # <class 'str'>
+    CA.log(str(self['MyArgB'].__class__)) # <class 'str'>
+    CA.log(str(self['MyArgC'].__class__)) # <class 'str'>
+    CA.log(str(self['MyArgD'].__class__)) # <class 'str'>
+```
+
+:::caution All of the types are string in python
+
+So if you want to check MyArgA is true or not, you have to use it like `if self['MyArgA'] == 'true'` instead of ~~`if self['MyArgA]`~~.
+
+:::

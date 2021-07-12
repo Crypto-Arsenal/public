@@ -1,0 +1,31 @@
+---
+sidebar_position: 9
+sidebar_label: get_exchange_pair
+hide_title: true
+---
+
+import { Highlight } from "../../../../../../../src/components/Highlight.js";
+
+# get_exchange_pair
+
+在單一交易對策略取得交易對資訊
+
+## Output
+
+```
+  exchange_pair: ExchangePair
+```
+
+## 範例
+
+取得交易對資訊
+
+```
+exchange_pair = CA.get_exchange_pair()
+```
+
+取得交易對資訊(Tuples)
+
+```
+exchange, pair, base, quote = CA.get_exchange_pair()
+```

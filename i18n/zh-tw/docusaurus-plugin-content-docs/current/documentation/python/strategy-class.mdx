@@ -1,0 +1,63 @@
+---
+sidebar_position: 1
+sidebar_label: Strategy Class
+hide_title: true
+---
+
+import { Highlight } from "../../../../../../src/components/Highlight.js";
+
+# Strategy Class
+
+```
+class Strategy(StrategyBase):
+    def __init__(self):
+        # strategy attributes
+        self.period = 60 * 60
+        self.subscribed_books = {
+            'Binance': {
+                'pairs': ['ETH-USDT'],
+            },
+        }
+        self.options = {}
+
+        # define your attributes here
+        pass
+
+    def on_order_state_change(self,  order):
+        CA.log('exchange: ' + str(order.exchange) + ', pair: ' + str(order.pair) + ', type: ' + str(order.type) +
+               ', status: ' + str(order.status) + ', price: ' + str(order.price) +
+               ', amount: ' + str(order.amount) + ', amount_filled: ' + str(order.amount_filled))
+
+    def trade(self, candles):
+        exchange, pair, base, quote = CA.get_exchange_pair()
+        close_price = candles[exchange][pair][0]['close']
+```
+
+## on_order_state_change
+
+回傳訂單新紀錄
+
+### Input
+
+```
+order: Order
+```
+
+## trade
+
+### Input
+
+```
+candles: dictionary
+```
+
+candle 為 K 線圖資訊，共含有 6 項資訊 open、high、low、close、volume 和 time，用法如下:
+
+```python
+candles[exchange][pair][0]['open']
+candles[exchange][pair][0]['high']
+candles[exchange][pair][0]['low']
+candles[exchange][pair][0]['close']
+candles[exchange][pair][0]['volume']
+candles[exchange][pair][0]['time']
+```

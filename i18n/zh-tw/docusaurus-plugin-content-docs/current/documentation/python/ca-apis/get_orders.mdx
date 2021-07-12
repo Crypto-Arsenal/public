@@ -1,0 +1,36 @@
+---
+sidebar_position: 11
+sidebar_label: get_orders
+hide_title: true
+---
+
+import { Highlight } from "../../../../../../../src/components/Highlight.js";
+
+# get_orders
+
+## Input
+
+```
+  status: OrderStatus;
+  limit: number;
+```
+
+## Output
+
+```
+  orders: [Order];
+```
+
+## 範例
+
+取得最新 5 筆已成交 (FILLED) 訂單。
+
+```python
+orders = CA.get_orders(CA.OrderStatus.FILLED, 5)
+```
+
+取得最新 3 筆新 (NEW) 訂單。
+
+```python
+orders = CA.get_orders(CA.OrderStatus.NEW, 3)
+```

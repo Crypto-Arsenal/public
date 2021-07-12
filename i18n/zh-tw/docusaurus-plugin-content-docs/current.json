@@ -3,24 +3,28 @@
     "message": "下一頁",
     "description": "The label for version current"
   },
-  "sidebar.tutorialSidebar.category.Strategy Tutorial": {
-    "message": "策略開發教學",
-    "description": "The label for category Strategy Tutorial in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Get Started": {
+    "message": "入門教學",
+    "description": "The label for category Get Started in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Python Strategy": {
+    "message": "Python 策略",
+    "description": "The label for category Python Strategy in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Documentation": {
+    "message": "開發文件",
+    "description": "The label for category Documentation in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Backtest": {
-    "message": "回測",
+    "message": "回測系統",
     "description": "The label for category Backtest in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Simulation": {
-    "message": "模擬",
+    "message": "模擬交易系統",
     "description": "The label for category Simulation in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Live Trade": {
-    "message": "實單交易",
+    "message": "實單交易系統",
     "description": "The label for category Live Trade in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Concept": {
-    "message": "使用說明",
-    "description": "The label for category Concept in sidebar tutorialSidebar"
   }
 }

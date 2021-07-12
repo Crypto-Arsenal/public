@@ -1,0 +1,38 @@
+---
+sidebar_position: 2
+sidebar_label: buy
+hide_title: true
+---
+
+import { Highlight } from "../../../../../../../src/components/Highlight.js";
+
+# buy
+
+掛一筆買入訂單，每個週期最多可掛 500 筆。
+
+## Input
+
+```
+  exchange: string;
+  pair: string;
+  amount: number;
+  type: OrderType;
+  price: number;
+```
+
+## 範例
+
+掛一筆數量為 1 的訂單市價單，市價單可不用設定 price。
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.buy(exchange, pair, 1, CA.OrderType.MARKET)
+```
+
+掛一筆數量為 1 的訂單限價單，價格為 close_price。
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+close_price = candles[exchange][pair][0]['close']
+CA.buy(exchange, pair, 1, CA.OrderType.LIMIT, close_price)
+```
