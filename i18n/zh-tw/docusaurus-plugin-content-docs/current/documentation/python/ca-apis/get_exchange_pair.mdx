@@ -10,22 +10,24 @@ import { Highlight } from "../../../../../../../src/components/Highlight.js";
 
 在單一交易對策略取得交易對資訊
 
-## Output
+## 回傳
 
-```
+```typescript
   exchange_pair: ExchangePair
 ```
+> 查看 [ExchangePair](/docs/documentation/python/ca-objects/exchange-pair)
+
 
 ## 範例
 
 取得交易對資訊
 
-```
+```py
 exchange_pair = CA.get_exchange_pair()
 ```
 
 取得交易對資訊(Tuples)
 
-```
+```py
 exchange, pair, base, quote = CA.get_exchange_pair()
 ```

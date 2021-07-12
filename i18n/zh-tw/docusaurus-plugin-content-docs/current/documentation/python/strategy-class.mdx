@@ -8,7 +8,7 @@ import { Highlight } from "../../../../../../src/components/Highlight.js";
 
 # Strategy Class
 
-```
+```py
 class Strategy(StrategyBase):
     def __init__(self):
         # strategy attributes
@@ -33,21 +33,22 @@ class Strategy(StrategyBase):
         close_price = candles[exchange][pair][0]['close']
 ```
 
-## on_order_state_change
+## `on_order_state_change`
 
 回傳訂單新紀錄
 
 ### Input
 
-```
+```py
 order: Order
 ```
+查看 [`Order`](/docs/documentation/python/ca-objects/order)
 
-## trade
+## `trade`
 
 ### Input
 
-```
+```py
 candles: dictionary
 ```
 

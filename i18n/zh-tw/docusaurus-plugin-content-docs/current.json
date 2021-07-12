@@ -26,5 +26,17 @@
   "sidebar.tutorialSidebar.category.Live Trade": {
     "message": "實單交易系統",
     "description": "The label for category Live Trade in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.CA Objects": {
+    "message": "CA Objects",
+    "description": "The label for category CA Objects in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.CA APIs": {
+    "message": "CA APIs",
+    "description": "The label for category CA APIs in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Third Party Library": {
+    "message": "Third Party Library",
+    "description": "The label for category Third Party Library in sidebar tutorialSidebar"
   }
 }

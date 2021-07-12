@@ -25,7 +25,7 @@ yarn build
 ## Translate
 
 ```console
-yarn run write-translations -- --locale fr
+yarn run write-translations -- --locale zh-tw
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
