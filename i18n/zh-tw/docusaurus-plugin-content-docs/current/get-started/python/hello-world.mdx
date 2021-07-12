@@ -8,7 +8,7 @@ import { Highlight } from "../../../../../../src/components/Highlight.js";
 
 # 第一支策略
 
-```
+```py
 class Strategy(StrategyBase):
     def __init__(self):
         # strategy attributes
@@ -47,11 +47,13 @@ class Strategy(StrategyBase):
 在此範例中，我們使用 `CA.get_exchange_pair()` 拿到交易所名稱 (exchange)、交易對名稱 (pair)、基準貨幣 (base)、標價貨幣 (quote)，並透過 exchange, pair 在 candles 中找到收盤價資訊。
 `candles[exchange][pair]` 為 K 線資料陣列，從新到舊排序 (`candles[exchange][pair][0]` 為最新的 K 線資料)，最多保存 500 筆， K 線包含以下資料：
 
-- open: 開盤價
-- high: 最高價
-- low: 最低價
-- close: 收盤價
-- volume: 交易量
-- time: 時間
+```
+    open: 開盤價
+    high: 最高價
+    low: 最低價
+    close: 收盤價
+    volume: 交易量
+    time: 時間
+```
 
 在 `trade()` 最後，使用 `CA.log()` 將字串 `'Hello world! Current price is {}'.format(close_price)` 印出，回測結束後會顯示在紀錄欄位。
