@@ -21,7 +21,7 @@ import { Highlight } from "../../../../../../src/components/Highlight.js";
 
 在 `__init__` 中設定長週期為 10、短週期為 5。
 
-```
+```py
 self.long_window_size = 10
 self.short_window_size = 5
 ```
@@ -30,7 +30,7 @@ self.short_window_size = 5
 
 當資料不足時 talib 會得到 NaN，無法判斷黃金交叉或死亡交叉，直接返回不交易。
 
-```
+```py
 def trade(self, candles):
     exchange, pair, base, quote = CA.get_exchange_pair()
 
@@ -44,14 +44,14 @@ def trade(self, candles):
 
 `candles` 是由新到舊排列，而 talib 接受的輸入為舊到新排列，因此將資料進行反轉。
 
-```
+```py
     # convert to chronological order for talib
     close_price_history.reverse()
 ```
 
 轉換成 talib 接受的 `np.array`，並使用 talib 計算得到長、短週期的移動平均歷史。
 
-```
+```py
     # convert np.array
     close_price_history = np.array(close_price_history)
     long_ma_history = talib.SMA(close_price_history, self.long_window_size)
@@ -62,7 +62,7 @@ def trade(self, candles):
 
 取得可用資產數量。
 
-```
+```py
     # get available balance
     base_balance = CA.get_balance(exchange, base)
     quote_balance = CA.get_balance(exchange, quote)
@@ -72,7 +72,7 @@ def trade(self, candles):
 
 根據 `long_ma_history`, `short_ma_history` 最後兩筆資料判斷黃金交叉、死亡交叉，並檢查資產後送出訂單。
 
-```
+```py
     if short_ma_history[-2] < long_ma_history[-2] and short_ma_history[-1] > long_ma_history[-1]:
         CA.log('黃金交叉')
         amount = 0.1
@@ -92,7 +92,7 @@ def trade(self, candles):
 
 ## 完整程式碼
 
-```
+```py
 class Strategy(StrategyBase):
     def __init__(self):
         # strategy attributes
