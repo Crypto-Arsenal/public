@@ -8,20 +8,26 @@ import { Highlight } from "../../../../../../../src/components/Highlight.js";
 
 # get_orders
 
+<Highlight color="#ffba00">
+  {" "}
+  僅可用於 trade() 或 on_order_state_change(){" "}
+</Highlight>
+
 ## Input
 
 ```typescript
-  status: OrderStatus;
-  limit: number;
+status: OrderStatus;
+limit: number;
 ```
-> 查看 [OrderStatus](/docs/documentation/python/ca-objects/order-status)
 
+> 查看 [OrderStatus](/docs/documentation/python/ca-objects/order-status)
 
 ## 回傳
 
 ```typescript
-  orders: [Order];
+orders: [Order];
 ```
+
 > 查看 [Order](/docs/documentation/python/ca-objects/order)
 
 ## 範例

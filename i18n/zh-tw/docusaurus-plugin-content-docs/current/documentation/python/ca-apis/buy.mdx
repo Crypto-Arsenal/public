@@ -8,19 +8,21 @@ import { Highlight } from "../../../../../../../src/components/Highlight.js";
 
 # buy
 
-掛一筆買入訂單，每個週期最多可掛 500 筆。
+<Highlight color="#ffba00"> 僅可用於 trade() </Highlight>
+
+掛一筆買入訂單，每個週期最多可掛 500 筆訂單。
 
 ## Input
 
 ```typescript
-  exchange: string;
-  pair: string;
-  amount: number;
-  type: OrderType;
-  price: number;
+exchange: string;
+pair: string;
+amount: number;
+type: OrderType;
+price: number;
 ```
-> 查看 [OrderType](/docs/documentation/python/ca-objects/order-type)
 
+> 查看 [OrderType](/docs/documentation/python/ca-objects/order-type)
 
 ## 範例
 
