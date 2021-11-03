@@ -1,0 +1,26 @@
+---
+sidebar_position: 3
+sidebar_label: pandas
+hide_title: false
+---
+
+import { Highlight } from "../../../../../../../src/components/Highlight.js";
+
+# pandas
+
+可使用 `pd` 存取 [pandas](https://pandas.pydata.org)
+
+### 範例
+
+使用 Series
+
+```python
+exchange, pair, base, quote = CA.get_exchange_pair()
+candle = candles[exchange][pair][0]
+data = {
+    'name': ['open', 'high', 'low', 'close'],
+    pair: [candle['open'], candle['high'], candle['low'], candle['close']],
+}
+df = pd.DataFrame(data)
+Log(str(df.at[1, pair]))
+```
