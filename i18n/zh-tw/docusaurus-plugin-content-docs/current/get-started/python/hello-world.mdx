@@ -13,11 +13,7 @@ class Strategy(StrategyBase):
     def __init__(self):
         # strategy attributes
         self.period = 60 * 60
-        self.subscribed_books = {
-            'Binance': {
-                'pairs': ['ETH-USDT'],
-            },
-        }
+        self.subscribed_books = {}
         self.options = {}
 
         # define your attributes here
@@ -36,7 +32,7 @@ class Strategy(StrategyBase):
 建構 `Strategy` 物件時會執行 `__init__(self)`，並設定 `period`, `subscribed_books`, `options` 屬性，分別代表：
 
 - period: 設定策略執行週期，單位為秒，**初始化後改變週期無效**。
-- subscribed_books: 設定預設交易所及交易對，可在啟動回測/模擬/實單時選擇其他交易所、交易對將其覆蓋。
+- subscribed_books: 單一交易對策略請勿修改。用於開發多交易對策略時，設定交易所及交易對。
 - options: **請勿修改**，策略參數使用。
 
 `Strategy` 需包括以下兩方法：
