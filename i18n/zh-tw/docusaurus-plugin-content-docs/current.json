@@ -3,40 +3,52 @@
     "message": "下一頁",
     "description": "The label for version current"
   },
-  "sidebar.tutorialSidebar.category.Get Started": {
-    "message": "入門教學",
-    "description": "The label for category Get Started in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Python Strategy": {
-    "message": "Python 策略",
-    "description": "The label for category Python Strategy in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Documentation": {
-    "message": "開發文件",
-    "description": "The label for category Documentation in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Backtest": {
-    "message": "回測系統",
-    "description": "The label for category Backtest in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Simulation": {
-    "message": "模擬交易系統",
-    "description": "The label for category Simulation in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Live Trade": {
-    "message": "實單交易系統",
-    "description": "The label for category Live Trade in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.CA Objects": {
-    "message": "CA Objects",
-    "description": "The label for category CA Objects in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.CA APIs": {
-    "message": "CA APIs",
-    "description": "The label for category CA APIs in sidebar tutorialSidebar"
-  },
   "sidebar.tutorialSidebar.category.Third Party Library": {
-    "message": "Third Party Library",
+    "message": "第三方 Library",
     "description": "The label for category Third Party Library in sidebar tutorialSidebar"
+  },
+  "sidebar.docs.category.Get Started": {
+    "message": "入門教學",
+    "description": "The label for category Get Started in sidebar docs"
+  },
+  "sidebar.docs.category.Python Strategy": {
+    "message": "Python 策略",
+    "description": "The label for category Python Strategy in sidebar docs"
+  },
+  "sidebar.docs.category.Documentation": {
+    "message": "開發文件",
+    "description": "The label for category Documentation in sidebar docs"
+  },
+  "sidebar.docs.category.CA Objects": {
+    "message": "CA Objects",
+    "description": "The label for category CA Objects in sidebar docs"
+  },
+  "sidebar.docs.category.CA APIs": {
+    "message": "CA APIs",
+    "description": "The label for category CA APIs in sidebar docs"
+  },
+  "sidebar.docs.category.Third Party Library": {
+    "message": "第三方 Library",
+    "description": "The label for category Third Party Library in sidebar docs"
+  },
+  "sidebar.docs.category.Backtest": {
+    "message": "回測系統",
+    "description": "The label for category Backtest in sidebar docs"
+  },
+  "sidebar.docs.category.Simulation": {
+    "message": "模擬交易系統",
+    "description": "The label for category Simulation in sidebar docs"
+  },
+  "sidebar.docs.category.Live Trade": {
+    "message": "實單交易系統",
+    "description": "The label for category Live Trade in sidebar docs"
+  },
+  "sidebar.docs.category.Strategy API": {
+    "message": "策略 API",
+    "description": "The label for category Strategy API in sidebar docs"
+  },
+  "sidebar.api.category.Indicator": {
+    "message": "指標",
+    "description": "The label for category Indicator in sidebar api"
   }
 }

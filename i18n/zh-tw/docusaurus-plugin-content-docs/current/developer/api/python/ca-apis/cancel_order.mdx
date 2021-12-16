@@ -1,0 +1,29 @@
+---
+sidebar_position: 6
+sidebar_label: cancel_order
+hide_title: false
+---
+
+import { Highlight } from "../../../../../../../../src/components/Highlight.js";
+
+# cancel_order
+
+<Highlight color="#ffba00"> 僅可用於 trade() </Highlight>
+
+## Input
+
+```typescript
+order: Order;
+```
+
+> 查看 [Order](/docs/documentation/python/ca-objects/order)
+
+## 範例
+
+以下範例為取得最新 1 筆狀態為 NEW 的定單，並取消其掛單:
+
+```python
+orders = CA.get_orders(CA.OrderStatus.NEW, 1)
+for order in orders:
+    CA.cancel_order(order)
+```
