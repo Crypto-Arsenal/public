@@ -1,0 +1,48 @@
+---
+sidebar_position: 7
+sidebar_label: get_history_candles
+hide_title: false
+---
+
+import { Highlight } from "../../../../../../../../src/components/Highlight.js";
+
+# get_history_candles
+
+可在 `__init__` 函數中取得過去 `length` 個週期為 `period` 的歷史資料，以便執行策略當下即可計算相關參數（例如 MA）。
+呼叫後請儲存結果，CA.get_history_candles 僅可呼叫一次。
+
+## Input
+
+```typescript
+  length: number;
+  period: number;
+```
+
+## 回傳
+
+```typescript
+  error: string;
+  candles: dictionary;
+```
+
+## 範例
+
+```python
+def __init__(self):
+    self.period = 60 * 60 # 1 hour
+    self.subscribed_books = {
+        'Binance': {
+            'pairs': ['ETH-USDT'],
+        },
+    }
+    self.options = {}
+
+    # query the past 1 days data
+    self.history_candles = CA.get_history_candles(24, self.period)
+    if self.history_candles:
+        CA.log(str(self.history_candles))
+        for exchange in self.history_candles:
+            for pair in self.history_candles[exchange]:
+                for candle in self.history_candles[exchange][pair]:
+                    CA.log(str(candle))
+```

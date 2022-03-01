@@ -1,0 +1,63 @@
+---
+sidebar_position: 5
+sidebar_label: Order
+hide_title: false
+---
+
+import { Highlight } from "../../../../../../../../src/components/Highlight.js";
+
+# Order
+
+### `order_id: integer`
+
+**訂單編號**
+
+e.g. 1626072888367
+
+### `time: string`
+
+**時間**
+
+e.g. 2021-01-05T08:01:00.000Z
+
+### `exchange: Exchange`
+
+**交易所** | 查看 [Exchange](/docs/developer/api/python/ca-objects/exchange)
+
+e.g. Binance
+
+### `pair: ExchangePair` 
+
+**交易對** | 查看 [ExchangePair](/docs/developer/api/python/ca-objects/exchange-pair)
+
+e.g. BTC-USDT
+
+### `type: OrderType`
+
+**訂單類型** | 查看 [OrderType](/docs/developer/api/python/ca-objects/order-type)
+
+e.g. OrderType.LIMIT
+
+### `status: OrderStatus` 
+
+**訂單狀態** | 查看 [OrderStatus](/docs/developer/api/python/ca-objects/order-status)
+
+e.g. OrderStatus.FILLED
+
+### `price: float`
+
+**價格**
+
+e.g. 25000
+
+### `amount: float`
+
+**數量**
+
+e.g. 1
+
+### `amount_filled: float`
+
+**成交數量**
+
+e.g. 0.5

@@ -1,0 +1,20 @@
+---
+sidebar_position: 1
+sidebar_label: NumPy
+hide_title: false
+---
+
+import { Highlight } from "../../../../../../../../src/components/Highlight.js";
+
+# NumPy
+
+可使用 `np` 存取 [numpy](http://www.numpy.org/)
+
+### 範例
+
+使用 np.append
+
+```python
+close_price = float( candles[exchange][pair][0]['close'])
+self.close_price_trace = np.append(self.close_price_trace, [close_price])
+```

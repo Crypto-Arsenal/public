@@ -1,0 +1,42 @@
+---
+sidebar_position: 3
+sidebar_label: sell
+hide_title: false
+---
+
+import { Highlight } from "../../../../../../../../src/components/Highlight.js";
+
+# sell
+
+<Highlight color="#ffba00"> 僅可用於 trade() </Highlight>
+
+掛一筆賣出訂單，每個週期最多可掛 500 筆訂單。
+
+## Input
+
+```typescript
+exchange: string;
+pair: string;
+amount: number;
+type: OrderType;
+price: number;
+```
+
+> 查看 [OrderType](/docs/developer/api/python/ca-objects/order-type)
+
+## 範例
+
+掛一筆數量為賣出 0.999 的訂單市價單，市價單可不用設定 price。
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.sell(exchange, pair, 0.999, CA.OrderType.MARKET)
+```
+
+掛一筆數量為賣出 0.999 的訂單限價單，價格為 close_price。
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+close_price = candles[exchange][pair][0]['close']
+CA.sell(exchange, pair, 0.999, CA.OrderType.LIMIT, close_price)
+```

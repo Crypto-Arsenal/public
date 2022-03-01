@@ -4,7 +4,7 @@
     "description": "The title in the navbar"
   },
   "item.label.Docs": {
-    "message": "文件",
+    "message": "開發文件",
     "description": "Navbar item with label Docs"
   },
   "item.label.Blog": {
@@ -18,5 +18,9 @@
   "item.label.Dashboard": {
     "message": "Dashboard",
     "description": "Navbar item with label Dashboard"
+  },
+  "item.label.Article": {
+    "message": "教學文章",
+    "description": "Navbar item with label Article"
   }
 }
