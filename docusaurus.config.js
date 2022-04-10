@@ -93,7 +93,7 @@ module.exports = {
             {
               label: 'Discussion',
               href: 'https://github.com/Crypto-Arsenal/public/discussions',
-            }
+            },
             {
               label: 'Discord',
               href: 'https://discord.gg/x8TTVEnG',
