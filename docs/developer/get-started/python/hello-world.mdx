@@ -8,4 +8,46 @@ import { Highlight } from "../../../../src/components/Highlight.js";
 
 # "Hello World"
 
-<Highlight color="#ffba00"> In Progress </Highlight>
+```py
+class Strategy(StrategyBase):
+    def __init__(self):
+        # strategy attributes
+        self.period = 60 * 60
+        self.subscribed_books = {}
+        self.options = {}
+
+        # define your attributes here
+        pass
+
+    def on_order_state_change(self,  order):
+        pass
+
+    def trade(self, candles):
+        exchange, pair, base, quote = CA.get_exchange_pair()
+        close_price = candles[exchange][pair][0]['close']
+        CA.log('Hello world! Current price is {}'.format(close_price))
+```
+
+Lets start from this Python 3 program. It is declared class `Strategy`, and this class inhirited from the systm built-in class `StrategyBase`.
+During constructing `Strategy` would execute `__init__(self)` to set up `period`, `subscribed_books`, and `options` attributes.
+
+- period: To set up strategy execute period with the unit as second. **Once initialized the period could not be changed.**
+- subscribed_books: No need to change in trading single pair strategy. If developing multiple pairs strategy, set up exchange and pairs here.
+- options: **No need to change here.** 
+
+`Strategy` includes belows 2 methods.
+- on_order_state_change(self, order): When the order status is changed, the system would pass (`order`) to call this method.
+- trade(self, candles): During each period, system would pass the latest price and volume data (`candles`) to call this method.
+
+In this example, it uses `CA.get_exchange_pair()` to get the name of exchange, pair, base, and quote. By using exchange, pair to get the latest close price in candles.
+`candles[exchange][pair]` is the array type of K bar, and it is sorted from the latest to the oldest data with at most 500 records data. The K bar includes below information.
+```
+    open
+    high 
+    low
+    close
+    volume
+    time
+```
+
+It is used `CA.log()` in the last sentence of `trade()` to print out the string `'Hello world! Current price is {}'.format(close_price)`. After backtesting, the print out messages would be showed in the records. 
