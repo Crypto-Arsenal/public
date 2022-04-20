@@ -93,15 +93,23 @@ module.exports = {
             {
               label: 'Discussion',
               href: 'https://github.com/Crypto-Arsenal/public/discussions',
-            }
-            // {
-            //   label: 'Discord',
-            //   href: 'https://discordapp.com/invite/docusaurus',
-            // },
-            // {
-            //   label: 'Twitter',
-            //   href: 'https://twitter.com/docusaurus',
-            // },
+            },
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/x8TTVEnG',
+            },
+            {
+              label: 'Telegram',
+              href: 'https://t.me/TG_Crypto_Arsenal',
+            },
+            {
+              label: 'Twitter',
+              href: 'https://twitter.com/MCryptoarsenal',
+            },
+            {
+              label: 'Medium',
+              href: 'https://medium.com/@crypto.arsenal.mrkt',
+            },
           ],
         },
         {
