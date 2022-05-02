@@ -9,21 +9,22 @@ import { Highlight } from "../../../../src/components/Highlight.js";
 # Strategy Parameters
 
 :::info
-System default parameters
+System default (reserved) parameters
 :::
 
 ### Sell short `is_shorting`
 
-User could set the parameter `is_shorting` as `true` to have shell short mode.
+User could set the parameter `is_shorting` as `true` to enable shell short mode.
 
 
 ### Self-defined parameters
 
-User could add some extra parameters  `self['OPTION_NAME']` for the strategy and change these parameters for every live trade, backtest or simulation.
+User could add their custom parameters and access them through `self['OPTION_NAME']` in the strategy. You can easily change these parameter values for every run of live trade, backtest or simulation.
+
 For example, if you have the following configuration for a strategy
 
 :::caution
-All arguments are actually stored and parsed as `String` type in your strategy code. **So you have to parse it by your self!**
+All arguments are stored and parsed as string `str` type in your strategy code. **So you be sure to parse to appropriate type yourself!**
 :::
 
 #### Type
