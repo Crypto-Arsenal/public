@@ -8,4 +8,36 @@ import { Highlight } from "../../../../../src/components/Highlight.js";
 
 # get_orders
 
-<Highlight color="#ffba00"> In Progress </Highlight>
+<Highlight color="#ffba00">
+  {" "}
+  This function can only be used in trade() and on_order_state_change().{" "}
+</Highlight>
+
+## Input
+
+```typescript
+status: OrderStatus;
+limit: number;
+```
+
+> Check [OrderStatus](/docs/developer/api/python/ca-objects/order-status)
+## Return
+
+```typescript
+orders: [Order];
+```
+
+> Check [Order](/docs/developer/api/python/ca-objects/order)
+## Example
+
+To get the latest 5 FILLED orders.
+
+```python
+orders = CA.get_orders(CA.OrderStatus.FILLED, 5)
+```
+
+To get the latest 3 NEW orders.
+
+```python
+orders = CA.get_orders(CA.OrderStatus.NEW, 3)
+```
