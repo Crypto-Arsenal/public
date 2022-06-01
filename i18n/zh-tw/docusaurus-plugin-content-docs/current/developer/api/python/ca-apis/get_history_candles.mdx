@@ -30,11 +30,7 @@ import { Highlight } from "../../../../../../../../src/components/Highlight.js";
 ```python
 def __init__(self):
     self.period = 60 * 60 # 1 hour
-    self.subscribed_books = {
-        'Binance': {
-            'pairs': ['ETH-USDT'],
-        },
-    }
+    self.subscribed_books = {}
     self.options = {}
 
     # query the past 1 days data

@@ -13,11 +13,7 @@ class Strategy(StrategyBase):
     def __init__(self):
         # strategy attributes
         self.period = 60 * 60
-        self.subscribed_books = {
-            'Binance': {
-                'pairs': ['ETH-USDT'],
-            },
-        }
+        self.subscribed_books = {}
         self.options = {}
 
         # define your attributes here

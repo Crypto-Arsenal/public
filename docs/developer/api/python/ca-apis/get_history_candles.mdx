@@ -29,11 +29,7 @@ CA.get_history_candles can only be used in `__init__`, so it is necessary to sav
 ```python
 def __init__(self):
     self.period = 60 * 60 # 1 hour
-    self.subscribed_books = {
-        'Binance': {
-            'pairs': ['ETH-USDT'],
-        },
-    }
+    self.subscribed_books = {}
     self.options = {}
     # query the past 1 days data
     self.history_candles = CA.get_history_candles(24, self.period)
