@@ -28,19 +28,22 @@ class Strategy(StrategyBase):
         CA.log('Hello world! Current price is {}'.format(close_price))
 ```
 
-Lets start from this Python 3 program. It is declared class `Strategy`, and this class inhirited from the systm built-in class `StrategyBase`.
-During constructing `Strategy` would execute `__init__(self)` to set up `period`, `subscribed_books`, and `options` attributes.
+Lets start from this Python 3 example. We first declare a class `Strategy` which extends from the systm built-in class `StrategyBase`.
 
-- period: To set up strategy execute period with the unit as second. **Once initialized the period could not be changed.**
-- subscribed_books: No need to change in trading single pair strategy. If developing multiple pairs strategy, set up exchange and pairs here.
-- options: **No need to change here.** 
+In the `Strategy` constructor, `__init__(self)`, we initialize `period`, `subscribed_books`, and `options` attributes:
 
-`Strategy` includes belows 2 methods.
-- on_order_state_change(self, order): When the order status is changed, the system would pass (`order`) to call this method.
-- trade(self, candles): During each period, system would pass the latest price and volume data (`candles`) to call this method.
+- `period`: How frequent your strategy recieves candle data and execute `trade()`. This determines the candle size i.e 1 minute, 1 hour, or 1 day. **The period cannot not be changed once initialized.**
+- `subscribed_books`: No need to change for single pair strategy. If developing multiple pairs strategy, set up exchange and pairs here (Not suppported yet).
+- `options`: **No need to initialize here.** 
 
-In this example, it uses `CA.get_exchange_pair()` to get the name of exchange, pair, base, and quote. By using exchange, pair to get the latest close price in candles.
-`candles[exchange][pair]` is the array type of K bar, and it is sorted from the latest to the oldest data with at most 500 records data. The K bar includes below information.
+`Strategy` class should implement the belows 2 methods.
+- `on_order_state_change(self, order)`: When the order status has changed, the system would pass `order: Order` in this callback method.
+- `trade(self, candles)`: During each period, system would pass the latest price and volume data `candles: Candle[]` in this callback method.
+
+In this example, we use a CA library method `CA.get_exchange_pair()` to get the name of exchange, pair, base, and quote. By using exchange and pair to get the latest `close` price from candles.
+
+`candles[exchange][pair]` returs an candles array. The array has data sorted from the latest to the oldest with at most 500 records data. The K bar includes the below fields.
+
 ```
     open
     high 
@@ -50,4 +53,4 @@ In this example, it uses `CA.get_exchange_pair()` to get the name of exchange, p
     time
 ```
 
-It is used `CA.log()` in the last sentence of `trade()` to print out the string `'Hello world! Current price is {}'.format(close_price)`. After backtesting, the print out messages would be showed in the records. 
+We can also use `CA.log()` to print out the string `'Hello world! Current price is {}'.format(close_price)`. After backtesting, the logged messages would be shown in the records. 
