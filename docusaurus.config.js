@@ -130,7 +130,7 @@ module.exports = {
     },
   },
   i18n: {
-    defaultLocale: 'zh-tw',
+    defaultLocale: 'en',
     locales: ['zh-tw', 'en'],
   },
 
