@@ -1,0 +1,47 @@
+---
+sidebar_position: 13
+sidebar_label: get_position
+hide_title: false
+---
+
+import { Highlight } from "../../../../../src/components/Highlight.js";
+
+# get_position
+
+## Input
+
+```typescript
+  exchange: string;
+  currency: string;
+```
+
+## Return
+
+```typescript
+  balance: Balance;
+```
+> Check [Balance](/docs/developer/api/python/ca-objects/position)
+
+## Example
+
+To get position size, and to print available and total size.
+
+```python
+exchange, pair, base, quote = CA.get_exchange_pair()
+long_position = CA.get_position(exchange, pair, CA.PositionSide.LONG)
+available_long_position_size = 0
+if long_position:
+    available_long_position_size = long_position.available_size
+    total_long_position_size = long_position.total_size
+    CA.log('available long position size: ' + str(available_long_position_size))
+    CA.log('total long position size: ' + str(total_long_position_size))
+
+short_position = CA.get_position(exchange, pair, CA.PositionSide.SHORT)
+available_short_position_size = 0
+if short_position:
+    available_short_position_size = short_position.available_size
+    total_short_position_size = short_position.total_size
+    CA.log('available short position size: ' + str(available_short_position_size))
+    CA.log('total short position size: ' + str(total_short_position_size))
+```
+
