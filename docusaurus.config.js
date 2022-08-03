@@ -24,37 +24,10 @@ module.exports = {
     ],
   ],
   themeConfig: {
-    hideableSidebar: true,
-    algolia: {
-      // If Algolia did not provide you any appId, use 'BH4D9OD16A'
-      appId: 'B8HNR07N3Q',
-
-      // Public API key: it is safe to commit it
-      apiKey: '6ba72ecb9cd8a7f76731ea0415b86339',
-
-      indexName: 'dev_crypto_arsenal',
-
-      // Optional: see doc section below
-      contextualSearch: true,
-
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      externalUrlRegex: 'external\\.com|domain\\.com',
-
-      // Optional: Algolia search parameters
-      searchParameters: {},
-
-      //... other Algolia params
-    },
-    gtag: {
-      // You can also use your "G-" Measurement ID here.
-      trackingID: 'G-JRERR47R34',
-      // Optional fields.
-      anonymizeIP: false, // Should IPs be anonymized?
-    },
-    googleAnalytics: {
-      trackingID: 'G-JRERR47R34',
-      // Optional fields.
-      anonymizeIP: false, // Should IPs be anonymized?
+    docs: {
+      sidebar: {
+        hideable: true
+      }
     },
     navbar: {
       // style: 'dark',
@@ -183,6 +156,17 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        gtag: {
+          // You can also use your "G-" Measurement ID here.
+          trackingID: 'G-JRERR47R34',
+          // Optional fields.
+          anonymizeIP: false, // Should IPs be anonymized?
+        },
+        googleAnalytics: {
+          trackingID: 'G-JRERR47R34',
+          // Optional fields.
+          anonymizeIP: false, // Should IPs be anonymized?
         },
       },
     ],
