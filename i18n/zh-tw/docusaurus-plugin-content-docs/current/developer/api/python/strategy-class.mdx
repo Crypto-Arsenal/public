@@ -4,7 +4,7 @@ sidebar_label: Strategy Class
 hide_title: false
 ---
 
-import { Highlight } from "../../../../../../../src/components/Highlight.js";
+import { Highlight } from "../../../../src/components/Highlight.js";
 
 # Strategy Class
 
@@ -15,32 +15,33 @@ class Strategy(StrategyBase):
         self.period = 60 * 60
         self.subscribed_books = {}
         self.options = {}
-
         # define your attributes here
         pass
-
+    def on_tradingview_signal(self, signal, candles):
+        CA.log('on_tradingview_signal: ' + str(signal))
+        exchange, pair, base, quote = CA.get_exchange_pair()
+        action = signal.get('action')
+        if action == 'cancelAll' or action == 'cancel_all':
+            CA.cancel_all()
+        else:
+            CA.place_order(exchange, pair, action, signal.get('limit'), signal.get('fixed'), signal.get('percent'), signal.get('clientOrderId'))
+        CA.log(signal.get('log'))
     def on_order_state_change(self,  order):
         CA.log('exchange: ' + str(order.exchange) + ', pair: ' + str(order.pair) + ', type: ' + str(order.type) +
                ', status: ' + str(order.status) + ', price: ' + str(order.price) +
                ', amount: ' + str(order.amount) + ', amount_filled: ' + str(order.amount_filled))
-
     def trade(self, candles):
         exchange, pair, base, quote = CA.get_exchange_pair()
         close_price = candles[exchange][pair][0]['close']
 ```
 
-## `on_order_state_change`
-
-回傳訂單新紀錄
-
-### Input
-
-```py
-order: Order
-```
-> 查看 [`Order`](/docs/developer/api/python/ca-objects/order)
-
 ## `trade`
+
+<Highlight color="#ffba00">
+  Must-Have
+</Highlight>
+
+每根 K 棒結束時 `trade()` 會被呼叫。
 
 ### Input
 
@@ -57,4 +58,30 @@ candles[exchange][pair][0]['low']
 candles[exchange][pair][0]['close']
 candles[exchange][pair][0]['volume']
 candles[exchange][pair][0]['time']
+```
+
+## `on_order_state_change`
+
+<Highlight color="#ffba00">
+  Must-Have
+</Highlight>
+
+當訂單被更新時 `on_order_state_change()` 會被呼叫。
+
+### Input
+
+```py
+order: Order
+```
+> 查看 [`Order`](/docs/developer/api/python/ca-objects/order)
+
+## `on_tradingview_signal`
+
+當收到 TradingView 訊號時 `on_tradingview_signal()` 會被呼叫。請看 [Help - TradingView](https://help.crypto-arsenal.io/en/collections/3568192-tradingview)。
+
+### Input
+
+```py
+signal: JSON
+candles: dictionary
 ```

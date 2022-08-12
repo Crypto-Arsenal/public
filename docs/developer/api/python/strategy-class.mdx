@@ -17,6 +17,15 @@ class Strategy(StrategyBase):
         self.options = {}
         # define your attributes here
         pass
+    def on_tradingview_signal(self, signal, candles):
+        CA.log('on_tradingview_signal: ' + str(signal))
+        exchange, pair, base, quote = CA.get_exchange_pair()
+        action = signal.get('action')
+        if action == 'cancelAll' or action == 'cancel_all':
+            CA.cancel_all()
+        else:
+            CA.place_order(exchange, pair, action, signal.get('limit'), signal.get('fixed'), signal.get('percent'), signal.get('clientOrderId'))
+        CA.log(signal.get('log'))
     def on_order_state_change(self,  order):
         CA.log('exchange: ' + str(order.exchange) + ', pair: ' + str(order.pair) + ', type: ' + str(order.type) +
                ', status: ' + str(order.status) + ', price: ' + str(order.price) +
@@ -26,17 +35,13 @@ class Strategy(StrategyBase):
         close_price = candles[exchange][pair][0]['close']
 ```
 
-## `on_order_state_change`
-
-Return the latest new order.
-
-### Input
-
-```py
-order: Order
-```
-> Check [`Order`](/docs/developer/api/python/ca-objects/order)
 ## `trade`
+
+<Highlight color="#ffba00">
+  Must-Have
+</Highlight>
+
+`trade()` will be called at the end of each candle.
 
 ### Input
 
@@ -54,15 +59,29 @@ candles[exchange][pair][0]['close']
 candles[exchange][pair][0]['volume']
 candles[exchange][pair][0]['time']
 ```
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
+## `on_order_state_change`
+
+<Highlight color="#ffba00">
+  Must-Have
+</Highlight>
+
+`on_order_state_change()` will be called when an order is updated.
+
+### Input
+
+```py
+order: Order
+```
+> Check [`Order`](/docs/developer/api/python/ca-objects/order)
+
+## `on_tradingview_signal`
+
+`on_tradingview_signal()` will be called when receving an update from TradingView. For more information please refer to [Help - TradingView](https://help.crypto-arsenal.io/en/collections/3568192-tradingview).
+
+### Input
+
+```py
+signal: JSON
+candles: dictionary
+```
