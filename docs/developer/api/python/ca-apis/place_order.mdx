@@ -1,0 +1,89 @@
+---
+sidebar_position: 2
+sidebar_label: place_order
+hide_title: false
+---
+
+import { Highlight } from "../../../../../src/components/Highlight.js";
+
+# place_order
+
+<Highlight color="#ffba00"> This function can only be used in trade() or on_tradingview_signal(). </Highlight>
+
+To put one buy order. Each period can put at max 500# orders.
+
+## Input
+
+```typescript
+exchange: string;
+pair: string;
+action: string;
+limit: number;
+amount: number;
+percent: number;
+client_order_id: string;
+```
+
+### action
+
+`buy` | `sell` | `open_long` | `open_short` | `close_long` | `close_short`
+
+### limit (optional)
+
+set `limit` to place a LIMIT order.
+
+### amount (optional)
+
+quantity based on a fixed quantity. if neither of quantity and percent is set, use `percent:100`. Quantity has higher priority than percent.
+
+### percent (optional)
+
+quantity based on a percentage of total balance. if neither of quantity and percent is set, use `percent:100`. Quantity has higher priority than percent.
+
+### client_order_id (optional)
+
+place / cancel an order with `client_order_id`.
+
+## Example
+
+### A buy market order to buy with 100% of total balance
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.buy(exchange, pair, action='buy')
+```
+
+### A buy limit order to buy with 100% of total balance
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.buy(exchange, pair, action='buy', limit=1234)
+```
+
+### A buy market order to buy 0.1 size/contract
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.buy(exchange, pair, action='buy', amount=0.1)
+```
+
+### A buy limit order to buy 0.1 size/contract
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.buy(exchange, pair, action='buy', limit=1234, amount=0.1)
+```
+
+### A buy market order to buy with 50% of total balance
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.buy(exchange, pair, action='buy', percent=50)
+```
+
+### A buy limit order to buy with 50% of total balance
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.buy(exchange, pair, action='buy', limit=1234, percent=50)
+```
