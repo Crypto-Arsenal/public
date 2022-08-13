@@ -49,7 +49,12 @@ module.exports = {
           docId: 'articles/indicator/get-started',
           label: 'Article',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        // { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          href: 'https://help.crypto-arsenal.io/en/',
+          label: 'Help',
+          position: 'left',
+        },
         {
           type: 'localeDropdown',
           position: 'right',
