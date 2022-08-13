@@ -10,18 +10,21 @@ import { Highlight } from "../../../../../src/components/Highlight.js";
 
 We support LightGBM model with version `lightgbm==3.3.2`
 
-Make sure that the model is trained with `sciket-learn==1.0.2`, lightgbm==3.3.2, and xgboost==1.6.1. Dump the model with joblib==1.1.0 and upload the pkl to the strategy
-Learn more about the [strategy flow here](https://help.crypto-arsenal.io/en/articles/6406316-strategy-flow-ml-model)
+Make sure that the model is trained with `lightgbm==3.3.2`. Dump the model with `joblib==1.1.0` and upload the pkl to the strategy.
 
-Your side
-```
+> Learn more about the [strategy flow here](https://help.crypto-arsenal.io/en/articles/6406316-strategy-flow-ml-model)
+
+**Your side**
+
+```py
 import joblib
 
 joblib.dump(gmb, 'gmb.pkl')
 ```
 
-Crypto Arsenal
-```
+**Crypto Arsenal**
+
+```py
 gmb = CA.get_source("my gmb model")
 gmb.predict(...)
 ```
