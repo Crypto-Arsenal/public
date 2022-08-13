@@ -72,10 +72,13 @@ module.exports = {
         {
           title: 'Docs',
           items: [
-
             {
               label: 'Tutorial',
               to: '/docs/intro',
+            },
+            {
+              href: 'https://help.crypto-arsenal.io/en/',
+              label: 'Help',
             },
           ],
         },
