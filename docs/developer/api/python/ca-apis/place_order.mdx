@@ -50,40 +50,40 @@ place / cancel an order with `client_order_id`.
 
 ```python
 exchange, pair, target, base = CA.get_exchange_pair()
-CA.buy(exchange, pair, action='buy')
+CA.place_order(exchange, pair, action='buy')
 ```
 
 ### A buy limit order to buy with 100% of total balance
 
 ```python
 exchange, pair, target, base = CA.get_exchange_pair()
-CA.buy(exchange, pair, action='buy', limit=1234)
+CA.place_order(exchange, pair, action='buy', limit=1234)
 ```
 
 ### A buy market order to buy 0.1 size/contract
 
 ```python
 exchange, pair, target, base = CA.get_exchange_pair()
-CA.buy(exchange, pair, action='buy', amount=0.1)
+CA.place_order(exchange, pair, action='buy', amount=0.1)
 ```
 
 ### A buy limit order to buy 0.1 size/contract
 
 ```python
 exchange, pair, target, base = CA.get_exchange_pair()
-CA.buy(exchange, pair, action='buy', limit=1234, amount=0.1)
+CA.place_order(exchange, pair, action='buy', limit=1234, amount=0.1)
 ```
 
 ### A buy market order to buy with 50% of total balance
 
 ```python
 exchange, pair, target, base = CA.get_exchange_pair()
-CA.buy(exchange, pair, action='buy', percent=50)
+CA.place_order(exchange, pair, action='buy', percent=50)
 ```
 
 ### A buy limit order to buy with 50% of total balance
 
 ```python
 exchange, pair, target, base = CA.get_exchange_pair()
-CA.buy(exchange, pair, action='buy', limit=1234, percent=50)
+CA.place_order(exchange, pair, action='buy', limit=1234, percent=50)
 ```
