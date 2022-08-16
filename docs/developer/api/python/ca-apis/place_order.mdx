@@ -10,7 +10,7 @@ import { Highlight } from "../../../../../src/components/Highlight.js";
 
 <Highlight color="#ffba00"> This function can only be used in trade() or on_tradingview_signal(). </Highlight>
 
-To put one buy order. Each period can put at max 500# orders.
+To put an order. Each period can put at max 500# orders.
 
 ## Input
 
@@ -22,6 +22,8 @@ limit: number;
 amount: number;
 percent: number;
 client_order_id: string;
+profit: number;
+loss: string;
 ```
 
 ### action
@@ -43,6 +45,14 @@ quantity based on a percentage of total balance. if neither of quantity and perc
 ### client_order_id (optional)
 
 place / cancel an order with `client_order_id`.
+
+### profit (optional)
+
+when the order has been filled, place a TAKE_PROFIT order with stop price `profit`.
+
+### loss (optional)
+
+when the order has been filled, place a STOP_LOSS order with stop price `loss`.
 
 ## Example
 
