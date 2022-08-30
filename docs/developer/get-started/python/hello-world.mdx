@@ -32,7 +32,7 @@ Lets start from this Python 3 example. We first declare a class `Strategy` which
 
 In the `Strategy` constructor, `__init__(self)`, we initialize `period`, `subscribed_books`, and `options` attributes:
 
-- `period`: How frequent your strategy recieves candle data and execute `trade()`. This determines the candle size i.e 1 minute, 1 hour, or 1 day. **The period cannot not be changed once initialized.**
+- `period`: How frequent your strategy recieves candle data and execute `trade()`. This determines the candle size i.e 1 minute, 1 hour, or 1 day. **The period cannot not be changed once initialized. The smallest period is 60 second**
 - `subscribed_books`: No need to change for single pair strategy. If developing multiple pairs strategy, set up exchange and pairs here (Not suppported yet).
 - `options`: **No need to initialize here.** 
 
