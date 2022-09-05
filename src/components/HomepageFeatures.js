@@ -22,7 +22,7 @@ const FeatureList = [
     img: second,
     description: (
       <>
-        TA-Lib for <code>JavaScript</code> and <code>Python</code>. The best of all, the machine learning models can help you cope with volatility
+        TA-Lib for <code>JavaScript</code> and <code>Python</code>. Best of all, machine learning can help you cope with volatility with non-linear models.
       </>
     ),
   },
@@ -31,7 +31,7 @@ const FeatureList = [
     img: sixth,
     description: (
       <>
-        Develoer can compete with others in battlefield. Traders can freely select the most effective one with proven records for your own backtesting or simulation before live-trading
+        Developers can compete with others in the battlefield. Traders can freely select the most effective bots with proven records through backtesting or simulation before live-trading
       </>
     ),
   },
