@@ -13,7 +13,7 @@ const FeatureList = [
     img: first,
     description: (
       <>
-        You focus on the trading logic, we do the rest with IDE, backtesting database, API connection to exchanges, and proprietary Strategy Bot Engine
+        You focus on the trading logic, we handle everything technical including online IDE, backtesting database, exchange API, TradingView webhook, and a proprietary Strategy Bot Engine
       </>
     ),
   },
