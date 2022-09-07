@@ -29,14 +29,14 @@ price: number;
 掛一筆數量為 1 的訂單市價單，市價單可不用設定 price。
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.buy(exchange, pair, 1, CA.OrderType.MARKET)
 ```
 
 掛一筆數量為 1 的訂單限價單，價格為 close_price。
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 close_price = candles[exchange][pair][0]['close']
 CA.buy(exchange, pair, 1, CA.OrderType.LIMIT, close_price)
 ```

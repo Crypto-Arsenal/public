@@ -77,49 +77,49 @@ when one of them is fully filled ([Order.status](/docs/developer/api/python/ca-o
 ### A buy market order to buy with 100% of total balance
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy')
 ```
 
 ### A buy limit order to buy with 100% of total balance
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy', limit=1234)
 ```
 
 ### A buy market order to buy 0.1 size/contract
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy', amount=0.1)
 ```
 
 ### A buy limit order to buy 0.1 size/contract
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy', limit=1234, amount=0.1)
 ```
 
 ### A buy market order to buy with 50% of total balance
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy', percent=50)
 ```
 
 ### A buy limit order to buy with 50% of total balance
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy', limit=1234, percent=50)
 ```
 
 ### An OTO order to close long, and open short after close-long order is fully filled
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='close_long', conditional_order_type='OTO', child_conditional_orders=[{
     'action': 'open_short'
 }])
@@ -128,7 +128,7 @@ CA.place_order(exchange, pair, action='close_long', conditional_order_type='OTO'
 ### An OTO order to close short, and open long after close-short order is fully filled
 
 ```python
-exchange, pair, target, base = CA.get_exchange_pair()
+exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='close_short', conditional_order_type='OTO', child_conditional_orders=[{
     'action': 'open_long'
 }])
