@@ -17,18 +17,16 @@ To put an order. Each period can put at max 500# orders.
 ```typescript
 exchange: string;
 pair: string;
-action: string;
+action: "buy" | "sell" | "open_long" | "open_short" | "close_long" | "close_short";
 limit: number;
 amount: number;
 percent: number;
 client_order_id: string;
 profit: number;
 loss: string;
+conditional_order_type: "OTO";
+child_conditional_orders: Input[];
 ```
-
-### action
-
-`buy` | `sell` | `open_long` | `open_short` | `close_long` | `close_short`
 
 ### limit (optional)
 
@@ -53,6 +51,26 @@ when the order has been filled, place a TAKE_PROFIT order with stop price `profi
 ### loss (optional)
 
 when the order has been filled, place a STOP_LOSS order with stop price `loss`.
+
+### conditional_order_type (optional)
+
+place a conditional order with the `conditional_order_type`.
+
+### child_conditional_orders (optional)
+
+place a conditional order with the following types:
+
+#### OTO (One-Triggers-the-Other order)
+
+an OTO order consists of a primary order and a child order.
+the child order will be placed only if the primary order is fully filled ([Order.status](/docs/developer/api/python/ca-objects/order) becomes [OrderStatus.FILLED](/docs/developer/api/python/ca-objects/order-status)).
+
+#### OCO (One-Cancels-the-Other order)
+
+<Highlight color="#ffba00"> In Progress </Highlight>
+
+an OCO order consists of two child orders.
+when one of them is fully filled ([Order.status](/docs/developer/api/python/ca-objects/order) becomes [OrderStatus.FILLED](/docs/developer/api/python/ca-objects/order-status)), the other will be canceled automatically.
 
 ## Example
 
@@ -96,4 +114,22 @@ CA.place_order(exchange, pair, action='buy', percent=50)
 ```python
 exchange, pair, target, base = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy', limit=1234, percent=50)
+```
+
+### An OTO order to close long, and open short after close-long order is fully filled
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.place_order(exchange, pair, action='close_long', conditional_order_type='OTO', child_conditional_orders=[{
+    'action': 'open_short'
+}])
+```
+
+### An OTO order to close short, and open long after close-short order is fully filled
+
+```python
+exchange, pair, target, base = CA.get_exchange_pair()
+CA.place_order(exchange, pair, action='close_short', conditional_order_type='OTO', child_conditional_orders=[{
+    'action': 'open_long'
+}])
 ```
