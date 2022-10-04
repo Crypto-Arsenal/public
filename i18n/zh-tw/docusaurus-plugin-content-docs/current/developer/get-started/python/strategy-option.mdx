@@ -8,25 +8,18 @@ import { Highlight } from "../../../../../../../src/components/Highlight.js";
 
 # 策略參數
 
-:::info
-系統預留參數
-:::
+### 系統預留參數
 
-### 手續費 `exchange_fee`
+請勿將系統預留參數用於其他用途
 
-另可調整 `exchange_fee` 以及 `spread`，以設定更嚴格的回測條件
+| Variable      | Description                                     | Type    | Default Value |
+| ------------- | ----------------------------------------------- | ------- | ------------- |
+| exchange_fee  | 設定回測及模擬的交易手續費，預設為 0.1％              | Number  | 0.001         |
+| spread        | 設定回測及模擬的滑價比例                            | Number  | 0             |
+| leverage      | 設定實單交易的槓桿倍數                              | Number  | 1             |
+| IS_DEBUG      | 設定 True 以開啟回測的除錯模式                      | Boolean | false         |
 
-![image2](https://drive.google.com/uc?export=view&id=1IWJoekgYPgQWfxfLv_DZ3KjtTkuIeA4L)
-
-上圖所示，`exchange_fee` 設定為 `0.01`，代表每一筆交易會加收總額 **1%** 費用
-
-:::note
-若沒有設定，預設是 **0.1%** 的手續費
-:::
-
-### 滑價調整 `spread`
-
-`spread` 代表滑點，`0.05` 代表每筆交易價格會有 **5%** 差異
+- [How to set Leverage](https://help.crypto-arsenal.io/en/articles/6572523-how-to-set-leverage)
 
 ### 自定義參數
 

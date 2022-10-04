@@ -8,9 +8,18 @@ import { Highlight } from "../../../../src/components/Highlight.js";
 
 # Strategy Parameters
 
-:::info
-System default (reserved) parameters
-:::
+### Reserved parameters
+
+Reserved parameters cannot be used for other purposes.
+
+| Variable      | Description                                                     | Type    | Default Value |
+| ------------- | --------------------------------------------------------------- | ------- | ------------- |
+| exchange_fee  | set exchange fee for backtests and simulations. (default: 0.1%) | Number  | 0.001         |
+| spread        | set spread for backtests and simulations.                       | Number  | 0             |
+| leverage      | set leverage for live trades.                                   | Number  | 1             |
+| IS_DEBUG      | set True to enable IS_DEBUG mode for backtests.                 | Boolean | false         |
+
+- [How to set Leverage](https://help.crypto-arsenal.io/en/articles/6572523-how-to-set-leverage)
 
 ### Self-defined parameters
 
