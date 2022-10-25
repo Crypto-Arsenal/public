@@ -26,6 +26,7 @@ profit: number;
 loss: string;
 conditional_order_type: "OTO";
 child_conditional_orders: Input[];
+notional: number;
 ```
 
 ### limit (optional)
@@ -34,11 +35,11 @@ set `limit` to place a LIMIT order.
 
 ### amount (optional)
 
-quantity based on a fixed quantity. if neither of quantity and percent is set, use `percent:100`. Quantity has higher priority than percent.
+quantity based on a fixed quantity. if neither of quantity, percent and notional is set, use `percent:100`. Quantity has higher priority than percent.
 
 ### percent (optional)
 
-quantity based on a percentage of total balance. if neither of quantity and percent is set, use `percent:100`. Quantity has higher priority than percent.
+quantity based on a percentage of total balance. if neither of quantity, percent and notional is set, use `percent:100`. Quantity has higher priority than percent.
 
 ### client_order_id (optional)
 
@@ -75,6 +76,12 @@ the child order will be placed only if the primary order is fully filled ([Order
 
 an OCO order consists of two child orders.
 when one of them is fully filled ([Order.status](/docs/developer/api/python/ca-objects/order) becomes [OrderStatus.FILLED](/docs/developer/api/python/ca-objects/order-status)), the other will be canceled automatically.
+
+### notional (optional)
+
+<Highlight color="#ffba00"> buy, open_long, open_short </Highlight>
+
+quantity based on a notional value to. if neither of quantity, percent and notional is set, use `percent:100`. Quantity has higher priority than percent.
 
 ## Example
 
@@ -118,6 +125,13 @@ CA.place_order(exchange, pair, action='buy', percent=50)
 ```python
 exchange, pair, base, quote = CA.get_exchange_pair()
 CA.place_order(exchange, pair, action='buy', limit=1234, percent=50)
+```
+
+### A buy market order to buy with 100 USDT
+
+```python
+exchange, pair, base, quote = CA.get_exchange_pair()
+CA.place_order(exchange, pair, action='buy', notional=100)
 ```
 
 ### An OTO order to close long, and open short after close-long order is fully filled
