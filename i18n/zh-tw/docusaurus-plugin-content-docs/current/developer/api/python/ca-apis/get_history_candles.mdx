@@ -16,6 +16,7 @@ import { Highlight } from "../../../../../../../../src/components/Highlight.js";
 ```typescript
   length: number;
   period: number;
+  is_reverse: boolean = False;
 ```
 
 ## 回傳
@@ -27,14 +28,30 @@ import { Highlight } from "../../../../../../../../src/components/Highlight.js";
 
 ## 範例
 
+### 獲取歷史價量資料（按時間順序排列）
 ```python
 def __init__(self):
     self.period = 60 * 60 # 1 hour
     self.subscribed_books = {}
     self.options = {}
-
-    # query the past 1 days data
+    # query the past 1 day data
     self.history_candles = CA.get_history_candles(24, self.period)
+    if self.history_candles:
+        CA.log(str(self.history_candles))
+        for exchange in self.history_candles:
+            for pair in self.history_candles[exchange]:
+                for candle in self.history_candles[exchange][pair]:
+                    CA.log(str(candle))
+```
+
+### 獲取歷史價量資料（按時間倒序排列）
+```python
+def __init__(self):
+    self.period = 60 * 60 # 1 hour
+    self.subscribed_books = {}
+    self.options = {}
+    # query the past 1 day data
+    self.history_candles = CA.get_history_candles(24, self.period, True)
     if self.history_candles:
         CA.log(str(self.history_candles))
         for exchange in self.history_candles:
