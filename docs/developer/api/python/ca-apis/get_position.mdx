@@ -25,7 +25,8 @@ import { Highlight } from "../../../../../src/components/Highlight.js";
 
 ## Example
 
-To get position size, and to print available and total size.
+To get position size, and to print available and total size. 
+Before the limit price order is successfully traded, only available size would decrease. After the limit price order is traded, total size would decrease.
 
 Note `get_position` will return the SAME response each time the callback is triggered. Recalling `CA.get_position` will not get the updated result.  The result will be upated the next time the callback is triggered. We are improving this experience  - you can leverge `on_order_state_change` to trigger side effect
 
