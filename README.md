@@ -1,4 +1,4 @@
-# Cryoto Arsenal Doc and Help Center 2
+# Cryoto Arsenal Doc and Help Center 3
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. Tailwind is added.
 
