@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Crypto Arsenal',
-  tagline: 'Documentation & Blog',
+  tagline: 'Documentation & Guide',
   url: 'https://docs.crypto-arsenal.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
