@@ -1,3 +1,3 @@
 # Backtest
 
-- pick a trading bot from arena and add to watchlist
+- Pick a trading bot from arena and add to watchlist

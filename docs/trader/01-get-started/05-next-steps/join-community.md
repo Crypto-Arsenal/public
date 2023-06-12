@@ -1,3 +1,3 @@
-# Join Community
+# Join Community Test
 
 links.crypto-arsenal.io
