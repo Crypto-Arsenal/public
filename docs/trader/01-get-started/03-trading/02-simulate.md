@@ -1,3 +1,3 @@
 # Simulate
 
-- pick a trading bot from arena and add to watchlist
+- Pick a Trading bot from arena and add to watchlist
