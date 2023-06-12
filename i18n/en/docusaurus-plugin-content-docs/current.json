@@ -1,0 +1,114 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Get Started": {
+    "message": "Get Started",
+    "description": "The label for category Get Started in sidebar docs"
+  },
+  "sidebar.docs.category.Python Strategy": {
+    "message": "Python Strategy",
+    "description": "The label for category Python Strategy in sidebar docs"
+  },
+  "sidebar.docs.category.TradingView Strategy": {
+    "message": "TradingView Strategy",
+    "description": "The label for category TradingView Strategy in sidebar docs"
+  },
+  "sidebar.docs.category.Technical Indicator": {
+    "message": "Technical Indicator",
+    "description": "The label for category Technical Indicator in sidebar docs"
+  },
+  "sidebar.docs.category.Strategy API": {
+    "message": "Strategy API",
+    "description": "The label for category Strategy API in sidebar docs"
+  },
+  "sidebar.docs.category.CA Objects": {
+    "message": "CA Objects",
+    "description": "The label for category CA Objects in sidebar docs"
+  },
+  "sidebar.docs.category.CA APIs": {
+    "message": "CA APIs",
+    "description": "The label for category CA APIs in sidebar docs"
+  },
+  "sidebar.docs.category.Third Party Library": {
+    "message": "Third Party Library",
+    "description": "The label for category Third Party Library in sidebar docs"
+  },
+  "sidebar.docs.category.Backtest": {
+    "message": "Backtest",
+    "description": "The label for category Backtest in sidebar docs"
+  },
+  "sidebar.docs.category.Simulation": {
+    "message": "Simulation",
+    "description": "The label for category Simulation in sidebar docs"
+  },
+  "sidebar.docs.category.Live Trade": {
+    "message": "Live Trade",
+    "description": "The label for category Live Trade in sidebar docs"
+  },
+  "sidebar.trader.category.Get Started": {
+    "message": "Get Started",
+    "description": "The label for category Get Started in sidebar trader"
+  },
+  "sidebar.trader.category.Get Started.link.generated-index.title": {
+    "message": "Get Started",
+    "description": "The generated-index page title for category Get Started in sidebar trader"
+  },
+  "sidebar.trader.category.Connect to your Exchange": {
+    "message": "Connect to your Exchange",
+    "description": "The label for category Connect to your Exchange in sidebar trader"
+  },
+  "sidebar.trader.category.Connect to your Exchange.link.generated-index.title": {
+    "message": "Connect to Your Exchange",
+    "description": "The generated-index page title for category Connect to your Exchange in sidebar trader"
+  },
+  "sidebar.trader.category.Choose a Trading Bot": {
+    "message": "Choose a Trading Bot",
+    "description": "The label for category Choose a Trading Bot in sidebar trader"
+  },
+  "sidebar.trader.category.Choose a Trading Bot.link.generated-index.title": {
+    "message": "Choose a Trading Bot",
+    "description": "The generated-index page title for category Choose a Trading Bot in sidebar trader"
+  },
+  "sidebar.trader.category.Trading": {
+    "message": "Trading",
+    "description": "The label for category Trading in sidebar trader"
+  },
+  "sidebar.trader.category.Trading.link.generated-index.title": {
+    "message": "Trading",
+    "description": "The generated-index page title for category Trading in sidebar trader"
+  },
+  "sidebar.trader.category.Live Trade": {
+    "message": "Live Trade",
+    "description": "The label for category Live Trade in sidebar trader"
+  },
+  "sidebar.trader.category.Live Trade.link.generated-index.title": {
+    "message": "Live Trade",
+    "description": "The generated-index page title for category Live Trade in sidebar trader"
+  },
+  "sidebar.trader.category.Next Steps": {
+    "message": "Next Steps",
+    "description": "The label for category Next Steps in sidebar trader"
+  },
+  "sidebar.trader.category.Next Steps.link.generated-index.title": {
+    "message": "Next Steps",
+    "description": "The generated-index page title for category Next Steps in sidebar trader"
+  },
+  "sidebar.trader.category.Notification": {
+    "message": "Notification",
+    "description": "The label for category Notification in sidebar trader"
+  },
+  "sidebar.trader.category.Notification.link.generated-index.title": {
+    "message": "Notification",
+    "description": "The generated-index page title for category Notification in sidebar trader"
+  },
+  "sidebar.trader.category.Common Questions": {
+    "message": "Common Questions",
+    "description": "The label for category Common Questions in sidebar trader"
+  },
+  "sidebar.trader.category.Common Questions.link.generated-index.title": {
+    "message": "Common Questions",
+    "description": "The generated-index page title for category Common Questions in sidebar trader"
+  }
+}
