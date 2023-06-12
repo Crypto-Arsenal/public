@@ -1,0 +1,34 @@
+{
+  "title": {
+    "message": "Crypto Arsenal",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "My Site Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Developer 👩🏻‍💻": {
+    "message": "Developer 👩🏻‍💻",
+    "description": "Navbar item with label Developer 👩🏻‍💻"
+  },
+  "item.label.Trader 🤖": {
+    "message": "Trader 🤖",
+    "description": "Navbar item with label Trader 🤖"
+  },
+  "item.label.Status": {
+    "message": "Status",
+    "description": "Navbar item with label Status"
+  },
+  "item.label.Dashboard": {
+    "message": "Dashboard",
+    "description": "Navbar item with label Dashboard"
+  },
+  "item.label.Python 🐍": {
+    "message": "Python 🐍",
+    "description": "Navbar item with label Python 🐍"
+  },
+  "item.label.TradingView 🔭": {
+    "message": "TradingView 🔭",
+    "description": "Navbar item with label TradingView 🔭"
+  }
+}

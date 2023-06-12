@@ -16,12 +16,21 @@ function HomepageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         {/* <img src={landing} /> */}
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/developer/get-started/python/hello-world">
-            Get Started - 5min ⏱️
-          </Link>
+        <div className="flex flex-col md:flex-row justify-center md:space-x-4 space-y-4 md:space-y-0 mt-5 align-center ">
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/developer/get-started/python/hello-world">
+              I'm a Strategy Developer 👩🏻‍💻
+            </Link>
+          </div>
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/category/get-started">
+              I want to use Trading Bots 🤖
+            </Link>
+          </div>
         </div>
       </div>
       <div className={styles.stripes}>

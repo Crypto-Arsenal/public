@@ -9,6 +9,19 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'Crypto-Arsenal', // Usually your GitHub org/user name.
   projectName: 'public', // Usually your repo name.
+  plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -38,21 +51,38 @@ module.exports = {
       },
       items: [
         {
-          type: 'doc',
-          docId: 'developer/get-started/python/hello-world',
+          type: 'dropdown',
+          label: 'Developer 👩🏻‍💻',
           position: 'left',
-          label: 'Docs',
+          items: [
+            {
+              type: 'doc',
+              docId: 'developer/get-started/python/hello-world',
+              label: 'Python 🐍',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'tradingview',
+              label: 'TradingView 🔭',
+            },
+          ]
         },
         {
-          type: 'doc',
+          type: 'docSidebar',
           position: 'left',
-          docId: 'articles/indicator/get-started',
-          label: 'Article',
+          sidebarId: 'trader',
+          label: 'Trader 🤖',
         },
+
         // { to: '/blog', label: 'Blog', position: 'left' },
+        // {
+        //   href: 'https://help.crypto-arsenal.io/en/',
+        //   label: 'Help',
+        //   position: 'left',
+        // },
         {
-          href: 'https://help.crypto-arsenal.io/en/',
-          label: 'Help',
+          href: 'https://status.crypto-arsenal.io/',
+          label: 'Status',
           position: 'left',
         },
         {
