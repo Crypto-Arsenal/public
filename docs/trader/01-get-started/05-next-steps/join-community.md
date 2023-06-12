@@ -1,3 +1,3 @@
 # Join Community
 
-links.crypto-arsenal.io
+Find our communities here at [links.crypto-arsenal.io](links.crypto-arsenal.io)
