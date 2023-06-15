@@ -1,0 +1,14 @@
+{
+  "position": 2,
+  "label": "Connect to your Exchange",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Connect to Your Exchange"
+  },
+  "customProps": {
+    "description": "This description can be used in the swizzled DocCard"
+  }
+}
