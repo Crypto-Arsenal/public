@@ -83,8 +83,7 @@ module.exports = {
           sidebarId: 'trader',
           label: 'Trader 🤖',
         },
-
-        // { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/blog', label: 'Blog', position: 'left' },
         // {
         //   href: 'https://help.crypto-arsenal.io/en/',
         //   label: 'Help',
