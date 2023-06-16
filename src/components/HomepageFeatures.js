@@ -6,6 +6,8 @@ import second from '/static/img/2-trading-libs.png';
 import third from '/static/img/4-split-as-you-profit.png';
 import forth from '/static/img/5-token-economy.png';
 import sixth from '/static/img/3-competition-ranking.png';
+import Image from '@theme/IdealImage';
+
 
 const FeatureList = [
   {
@@ -41,7 +43,7 @@ function Feature({ img, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <img className={styles.featureImage} src={img} alt={title} />
+        <Image img={img} className={styles.featureImage} alt={title}/>
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
