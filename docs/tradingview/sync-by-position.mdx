@@ -1,0 +1,58 @@
+# Sync By TradingView Position
+
+Step 1: Lets' make sure the mode is QUANT
+
+Step 2: Navigate to Strategy and Create a TradingView Strategy
+
+Step 3: Pick USDT Future and your currency
+
+Step 4: Copy Webhook URL & Message to TradingView Alert Box
+
+Step 5:  Modify and Save the Alert Message
+ 
+
+
+Note that you replace connectorName and connectorToken
+
+ 
+
+Template Here 👇
+
+{
+"connectorName":"REPLACE_NAME",
+"connectorToken":"REPLACE_TOKEN",
+"log":"{{strategy.order.comment}}",
+"entryOrder":{
+"value":100,
+"mode":"compoundAvailableBalancePercent"
+},
+"position":{
+"side":"{{strategy.market_position}}",
+"size":{{strategy.market_position_size}},
+"prev_side":"{{strategy.prev_market_position}}",
+"prev_size":{{strategy.prev_market_position_size}}
+},
+"maxWaitPositionReversalSeconds": 20
+}
+ 
+
+If the orders are too close to each other, use delaySeconds to delay placing orders
+
+ 
+
+{
+...
+"delaySeconds": 10,
+"delaySecondsFilter": "open"
+}
+Step 6:  Copy the TradingView Python Code template 
+Copy the code from this GitHub Repository 👇
+
+ 
+
+Expand to see and copy the code
+ 
+
+Step 7:  Launch Simulation and Test
+ 
+
