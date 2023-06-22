@@ -2,22 +2,22 @@ import Image from '@theme/IdealImage';
 
 # Common Trading Bot Error
 
-回報錯誤
+Report an error
  
 
-再給我們回報錯誤時 可以先去 Portfolio 看一下機器人 ID 並且提供你的 email
+When reporting an error, please go to the Portfolio and check the robot ID, and provide your email.
 
  <Image img={require('/img/trader/trading_error.png')} />
  
 
-以下是常見策略錯誤訊息及原因
+Below are common strategy error messages and their causes.
  
 
  
 
 AuthenticationError: Invalid API key, IP, or permissions for the action
 
-這個錯誤代表你的交易所API設定有錯誤 看這邊去確認 有給到對的權限 設置完後下一個動作就應該不會出錯
+This error indicates that there is an error in your exchange API configuration. Please check here to ensure that you have provided the correct permissions. Once you have set it up correctly, the next action should not result in an error.
 
  
 
@@ -25,24 +25,24 @@ AuthenticationError: Invalid API key, IP, or permissions for the action
 
 Error: amount 0 should be greater than 0.001
 
-可能是
+Possible explanation:
 
-在跟單之前 量化策略已經開倉了 在平倉訊號來的時候 我們不會有倉位可以去平 所以錯誤說 『數量不行是0』 - 這個錯誤不用做任合事 只需要等下次量化策略開單即可
+Before following the trades, the quantitative strategy has already opened a position. When the closing signal comes, we do not have any position to close, resulting in the error message 'Quantity cannot be zero.' This error does not require any action; you just need to wait for the next trade to be executed by the quantitative strategy.
 
  
 
 ExchangeError: Order's position side does not match user's setting
 
-這個錯誤代表你的交易所設定有錯誤 看這邊去確認
+This error indicates that there is an error in your exchange settings. Please check here for verification.
 
  
+When the robot is activated, it uses the API to set the correct configurations on the exchange:
 
-機器人啟動時會用api去交易所設定正確的設定：
-1.  倉位模式為雙向模式
-2. 該交易對的保證金模式為逐倉
-3. 該交易對的槓桿倍數為策略開發者指定的倍數
+1. Position mode should be set to dual (both long and short positions).
+2. The margin mode for the trading pair should be set to isolated margin.
+3. The leverage multiplier for the trading pair should be set according to the strategy developer's specified value.
 
-目前我們知道如果有其他倉位時調整槓桿，交易所可能回傳錯誤 然後設置失敗就會導致次錯誤
+Currently, we are aware that if there are existing positions and the leverage is adjusted, the exchange may return an error. If the setting fails, it will result in this error.
 
  
 

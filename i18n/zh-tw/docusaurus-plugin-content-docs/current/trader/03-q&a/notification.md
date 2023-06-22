@@ -2,18 +2,18 @@ import Image from '@theme/IdealImage';
 
 # Notification | Telegram
 
-Click on the small bell icon in the upper right corner.
+點選右上小鈴鐺
 
 <Image img={require('/img/trader/notification/notification.png')} />
 
-After expanding, click on 'Alert Settings' in the lower right corner.
+展開後，點選右下Alert Settings
 
 <Image img={require('/img/trader/notification/alert_setting.png')} />
 
-Click on 'Connect' below Telegram.
+Telegram 下面點選 Connect
 
 <Image img={require('/img/trader/notification/telegram.png')} />
 
-Remember to press 'Start' to activate the bot.
+記得要按 "Start" 給機器人
 
 <Image img={require('/img/trader/notification/start.jpeg')} />

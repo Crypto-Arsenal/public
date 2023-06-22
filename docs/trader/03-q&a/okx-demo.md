@@ -1,36 +1,36 @@
 import Image from '@theme/IdealImage';
 
-# OKX 模擬盤 demo trading API key 申請
+# OKX Demo Trading API Key Application.
 
-- 登入 OKX 交易所，點選 [交易] -> [模擬交易]
+- Login to OKX exchange, click on [Trade] -> [Demo Trading].
 
 <Image img={require('/img/trader/okx-demo/okx_demo.png')} />
 
-- 點 [設定 (交易/市場資訊右邊第二個圖示)] 
+- Click on [Settings (the second icon to the right of Trading/Market Information)].
 
 <Image img={require('/img/trader/okx-demo/okx_setting.png')} />
 
-- 點第一個 [賬戶模式]
+- Click on the first option [Account Mode].
 
 <Image img={require('/img/trader/okx-demo/okx_account.png')} />
 
-- 設定為 [單幣種保證金模式]
+- Set it to [Single Currency Margin Mode].
 
 <Image img={require('/img/trader/okx-demo/okx_single.png')} />
 
-- 點右上角 [用戶 (資產管理一模擬交易右邊的圖示)] -> [模擬交易 API]
+- Click on the top right corner [User (the icon next to Asset Management in Demo Trading)] -> [Demo Trading API].
 
 <Image img={require('/img/trader/okx-demo/okx_api.png')} />
 
-- 點 [申請模擬交易V5 API] 創建 API
+- Click on [Apply for Demo Trading V5 API] to create an API.
 
 <Image img={require('/img/trader/okx-demo/okx_create_api.png')} />
 
-- 到 CryptoArsenal Profile 頁面，點 [API Key] -> [manage]
+- Go to the CryptoArsenal Profile page, click on [API Key] -> [manage].
 
 <Image img={require('/img/trader/okx-demo/crypto_api.png')} />
 
-- 選擇 OKX(Demo trading)，輸入剛剛創建的 API key
+- Select OKX (Demo trading), enter the API key you just created.
 
 <Image img={require('/img/trader/okx-demo/crypto_create.png')} />
 
