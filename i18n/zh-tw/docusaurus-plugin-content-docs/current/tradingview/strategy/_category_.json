@@ -1,0 +1,11 @@
+{
+  "position": 1,
+  "label": "TradingView Strategy",
+  "collapsible": true,
+  "collapsed": false,
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "TradingView Strategy"
+  }
+}
