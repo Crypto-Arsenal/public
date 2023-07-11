@@ -1,5 +1,3 @@
 # How to enable Google Authenticator
 
-If you login with Google, we won't be able to enable Google Authenticator since it only supports those who signed up with password. However, you could always enable [2FA on your Google account](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome?pli=1) that you sign up with.
-
-Google login 的人 沒有辦法用Google Authenticator 歐 可以在你的Google Account 上加[2FA](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome?pli=1)
+如果您使用 Google 登錄，我們將無法啟用 Google Authenticator，因為它僅支援使用密碼註冊的用戶。不過，您仍然可以在使用 Google 帳戶註冊時啟用[雙重身份驗證（2FA)](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome?pli=1)。
