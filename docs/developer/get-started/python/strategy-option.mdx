@@ -73,7 +73,7 @@ You can access these arguments by `self['argName']`
 :::
 
 ```python
-def trade(self, information):
+def trade(self, candles):
     CA.log(self['MyArgA']) # true
     CA.log(self['MyArgB']) # 10.9
     CA.log(self['MyArgC']) # Hello World!
@@ -83,6 +83,9 @@ def trade(self, information):
     CA.log(str(self['MyArgB'].__class__)) # <class 'str'>
     CA.log(str(self['MyArgC'].__class__)) # <class 'str'>
     CA.log(str(self['MyArgD'].__class__)) # <class 'str'>
+
+    if self['MyArgB']:
+        self.MyArgB = float(self['MyArgB'])
 ```
 
 :::caution All of the types are string in python
