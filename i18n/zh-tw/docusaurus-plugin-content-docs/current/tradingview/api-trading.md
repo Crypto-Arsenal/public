@@ -6,7 +6,7 @@ import Image from '@theme/IdealImage';
 
 ### [🔥<u>_Python Demo Script_</u>](https://colab.research.google.com/drive/1Patm1mcPO3st5xTk2d2eQxBN6GTOt5z7?usp=sharing)
 
-⚠️ 注意，這僅適用於使用**TradingView ＆ API**模板創建的策略。該模板應實現`on_tradingview_signal`函數，該函數使用我們的[<u>Python庫<u/>](https://docs.crypto-arsenal.io/docs/developer/get-started/python/hello-world）根據接收到的信號下訂單。請參考下面的示例。
+⚠️ 注意，這僅適用於使用**TradingView ＆ API**模板創建的策略。該模板應實現`on_tradingview_signal`函數，該函數使用我們的[<u>Python庫</u>](https://docs.crypto-arsenal.io/docs/developer/get-started/python/hello-world）根據接收到的信號下訂單。請參考下面的示例。
 
 <Image img={require('/img/developer/tradingview/api-trading/flow.png')} />
 

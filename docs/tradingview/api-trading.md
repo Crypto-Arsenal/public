@@ -9,6 +9,9 @@ import Image from '@theme/IdealImage';
 ⚠️ Note that this only works if the strategy is created with **TradingView & API**
 template that implements `on_tradingview_signal` which uses our [<u>Python library</u>](https://docs.crypto-arsenal.io/docs/developer/get-started/python/hello-world) to place orders based on the received signal (see below)
 
+<!-- <Image img={require("/img/developer/tradingview/api-trading/flow.png")} /> -->
+<!-- <Image img={require('/img/developer/tradingview/api-trading/usdm.png')} /> -->
+
 <Image img={require('/img/developer/tradingview/api-trading/flow.png')} />
 
 ### POST API endpoint
