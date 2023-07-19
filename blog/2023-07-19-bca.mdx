@@ -19,6 +19,31 @@ tags: [quant, tradingview, python, ema]
 
 
 - [TradingView CA ema cross 策略](https://www.tradingview.com/script/P31Kg8mq/) 
+
+```
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © Crypto-Arsenal
+
+//@version=5
+strategy("我的策略", overlay=true, margin_long=100, margin_short=100)
+//@version=5
+//indicator(title="Moving Average Exponential", shorttitle="EMA", overlay=true, timeframe="", timeframe_gaps=true)
+ema10 = ta.ema(close,10)
+ema20 = ta.ema(close,20)
+plot(ema10, title="Smoothing Line", color=#f37f20)
+plot(ema20, title="Smoothing Line", color=#4320f3)
+
+longCondition = ta.crossover(ema10,ema20)
+if (longCondition)
+    strategy.close_all()
+    strategy.entry("My Long Entry Id", strategy.long)
+
+shortCondition = ta.crossunder(ema10,ema20)
+if (shortCondition)
+    strategy.close_all()
+    strategy.entry("My Short Entry Id", strategy.short)
+```
+
 - 如何串接任何 `TradingView` 策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `TradingView` ([詳細教學](https://docs.crypto-arsenal.io/docs/tradingview/strategy/sync-by-position))
 
 
