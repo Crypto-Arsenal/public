@@ -1,6 +1,6 @@
 ---
 slug: bca
-title: ACE X CA X Lead Capital 量化課程 7/19
+title: ACE X CA X Lead Capital 量化課程
 author: BCA Daniel
 author_title: Quant Lead & BD & MM
 author_url: https://www.instagram.com/bca_daniel_/
@@ -9,18 +9,66 @@ hide_table_of_contents: false
 tags: [quant, tradingview, python, ema]
 ---
 
+
+<details>
+  <summary>此頁的ＱＲ連結</summary>
+  <img src="/img/blog/aceqr.png" width="60%"/> 
+</details>
+
+<details>
+  <summary>課綱</summary>
+  <img src="/img/blog/ace791.JPG" width="50%"/> 
+  <img src="/img/blog/ace726.JPG" width="50%"/> 
+</details>
+
+
 ### `Crypto-Arsenal`
 
 
 - [註冊連結](https://crypto-arsenal.io/?ref=BCA_qbb) (可以 Google 註冊) 
- 
+ - 如何用CA串接和自動化任何 `TradingView` 策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `TradingView` ([詳細教學](https://docs.crypto-arsenal.io/docs/tradingview/strategy/sync-by-position))
+- 如何用CA回測和實單策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `Technical Indicator` > `EMA`
 
 ### `TradingView`
 
+#### 7/26 簡易`EMA`策略 + 簡易 Filter (濾網) i.e `RSI` & `Momentum`
 
-- [TradingView CA ema cross 策略](https://www.tradingview.com/script/P31Kg8mq/) 
+```python
+//@version=5
+strategy(title="CA_test", shorttitle="EMA", overlay=true,  default_qty_value = 80)
 
+ema10 = ta.ema(close,10)
+ema20 = ta.ema(close,20)
+//filter
+rsi = ta.rsi(close,20)
+mom = math.abs( ta.mom(close,49) )
+
+//condition
+long = ta.crossover(ema10,ema20)
+short = ta.crossunder(ema10,ema20)
+
+//position
+if(long and mom >= 10 and rsi < 50)
+    if(strategy.position_size != 0)
+        strategy.close_all()
+    strategy.entry("long",strategy.long)
+if(short and mom >= 10 and rsi > 50)
+    if(strategy.position_size != 0)
+        strategy.close_all()
+    strategy.entry("short",strategy.short)
+
+if( rsi > 80 or rsi < 20 )
+    strategy.close_all()
+
+plot(rsi , color = color.blue)
+plot(ema10,  color=#f37f20)
+plot(ema20 , color = color.red)
 ```
+
+
+#### 7/19 簡易`EMA`策略
+
+```python
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
 // © Crypto-Arsenal
 
@@ -43,16 +91,132 @@ if (shortCondition)
     strategy.close_all()
     strategy.entry("My Short Entry Id", strategy.short)
 ```
-
-- 如何串接任何 `TradingView` 策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `TradingView` ([詳細教學](https://docs.crypto-arsenal.io/docs/tradingview/strategy/sync-by-position))
-
-
 ### `Python`
 
-- 如何回測和實單策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `Technical Indicator` > `EMA`
+#### 7/19 Superposition `EMA` Python 策略
+
+```python
+"""
+Contributed by BCA_Daniel @BCA_Quantrade / Crypto-Arsenal & Alan Wu @Crypto-Arsenal
+-
+Superposition EMAs are designed to smooth out EMAs and reduce noise interference.
+This strategy utilizes four EMAs and uses the output of the previous EMA as the input for the next EMA.
+
+Strategy designer: BCA_Daniel 2023.07.16
+"""
+class Strategy(StrategyBase):
+    def __init__(self):
+        # strategy property
+        self.subscribed_books = {}
+        self.period = 60  *  30 
+        self.options = {}
+        self.last_type = 'sell'
+
+        ### fast / slow ema period
+        self.fast_period = 14
+        self.sp1_period = 14
+        self.sp2_period =14
+        self.slow_period = 14
+    
+        self.divide_quote = 0
+        self.proportion = 0.2
+
+    def on_order_state_change(self,  order):
+        pass
+
+    # called every self.period
+    def trade(self, candles):
+        exchange, pair, base, quote = CA.get_exchange_pair()
+        ca_position = self.get_ca_position()
+        
+        close_price_history = [candle['close'] for candle in candles[exchange][pair]]
+        high_price_history = [candle['high'] for candle in candles[exchange][pair]]
+        low_price_history = [candle['low'] for candle in candles[exchange][pair]]
+
+        # convert to chronological order for talib
+        close_price_history.reverse()
+        high_price_history.reverse()
+        low_price_history.reverse()
+
+        # convert np.array
+        close_price_history = np.array(close_price_history)
+        high_price_history = np.array(high_price_history)
+        low_price_history = np.array(low_price_history)
+
+        close_price = close_price_history[0]
+        high_price = high_price_history[0]
+
+        #ema fast / slow create
+        #np.nan_to_num used to refilled nan to 0 for output array
+        EMA_fast = talib.EMA(close_price_history, timeperiod=self.fast_period)
+        EMA_fast_filled = np.nan_to_num(EMA_fast, nan=0)
+        EMA_superposition_1 = talib.EMA(EMA_fast_filled, timeperiod=self.sp1_period)
+        EMA_superposition_1_filled =  np.nan_to_num(EMA_superposition_1, nan=0)
+        EMA_superposition_2 = talib.EMA(EMA_superposition_1_filled,self.sp2_period)
+        EMA_superposition_2_filled = np.nan_to_num(EMA_superposition_2, nan=0)
+        EMA_slow = talib.EMA(EMA_superposition_2_filled, self.slow_period)
+        
+        if len(close_price_history) < self.slow_period + 1:
+            return []
+        
+        # current ema fast / slow
+        curr_ema_fast = EMA_fast[-1]
+        curr_ema_slow = EMA_slow[-1]
+
+        # previous time stamp ema
+        prev_ema_fast = EMA_fast[-2]
+        prev_ema_slow = EMA_slow[-2]
+
+        # get available balance
+        base_balance = CA.get_balance(exchange, base)
+        quote_balance = CA.get_balance(exchange, quote)
+        available_base_amount = base_balance.available
+        available_quote_amount = quote_balance.available
+        if self.divide_quote == 0:
+            self.divide_quote = np.round(available_quote_amount* self.proportion, 5)
+
+        # initialize signal to be 0
+        signal = 0
+        if available_base_amount< self.divide_quote/high_price and available_base_amount > -self.divide_quote/high_price:
+            # open long position
+            if curr_ema_fast > curr_ema_slow and prev_ema_fast < prev_ema_slow:
+                signal = 1
+            # open short position
+            if curr_ema_fast < curr_ema_slow and prev_ema_fast > prev_ema_slow:
+                signal = -1
+          
+        # Sell short
+        if signal == -1:
+            self['is_shorting'] = 'true'
+            CA.log('Sell short ' + str(base))
+            if ca_position:
+                CA.place_order(exchange, pair, action='close_long', conditional_order_type='OTO', child_conditional_orders=[{'action': 'open_short', 'percent':80}])
+            else:
+                CA.place_order(exchange, pair, action='open_short',  percent=80)
+
+        # Buy long
+        if signal == 1:
+            self['is_shorting'] = 'false'
+            CA.log('Buy ' + str(base))
+            if ca_position:
+                CA.place_order(exchange, pair, action='close_short', conditional_order_type='OTO', child_conditional_orders=[{'action': 'open_long', 'percent':80}])
+            else:
+                CA.place_order(exchange, pair, action='open_long',  percent=80)
+
+        
+        # return current total position: -n 0, +n  where n is number of contracts
+    def get_ca_position(self):
+        exchange, pair, base, quote = CA.get_exchange_pair()
+
+        long_position = CA.get_position(exchange, pair, CA.PositionSide.LONG)
+        if long_position:
+            return abs(long_position.total_size)
+
+        short_position = CA.get_position(exchange, pair, CA.PositionSide.SHORT)
+        if short_position:
+            return -1 * abs(short_position.total_size)
+
+        return  0
+```
 
 
-
-![An image from the static](/img/blog/ace791.JPG)
-
-![An image from the static](/img/blog/aceqr.png)
