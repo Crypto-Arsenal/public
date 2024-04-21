@@ -823,7 +823,14 @@ export default defineConfig({
   branch,
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Get this from tina.io
   token: process.env.TINA_TOKEN, // Get this from tina.io
-  search: process.env.NEXT_TINA_SEARCH_API_KEY,
+  search: {
+    tina: {
+      indexerToken: process.env.NEXT_TINA_SEARCH_API_KEY,
+      stopwordLanguages: ['eng'],
+    },
+    indexBatchSize: 100,
+    maxSearchIndexFieldLength: 100,
+  },
   build: {
     outputFolder: "admin",
     publicFolder: "static",
