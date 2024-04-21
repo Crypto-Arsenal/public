@@ -1,33 +1,44 @@
 ---
 slug: bca
-title: ACE X CA X Lead Capital 量化課程
 author: BCA Daniel
 author_title: Quant Lead & BD & MM
-author_url: https://www.instagram.com/bca_daniel_/
+author_url: "https://www.instagram.com/bca_daniel_/"
 author_image_url: /img/blog/bca.jpeg
 hide_table_of_contents: false
-tags: [quant, tradingview, python, ema]
+title: ACE X CA X Lead Capital 量化課程
+tags:
+  - quant
+  - tradingview
+  - python
+  - ema
 ---
-
 
 <details>
   <summary>此頁的ＱＲ連結</summary>
-  <img src="/img/blog/aceqr.png" width="60%"/> 
+
+  <img src="/img/blog/aceqr.png" width="60%" />
 </details>
 
 <details>
   <summary>課綱</summary>
-  <img src="/img/blog/ace791.JPG" width="50%"/> 
-  <img src="/img/blog/ace726.JPG" width="50%"/> 
+
+{" "}
+<img src="/img/blog/ace791.JPG" width="50%" />
+
+  <img src="/img/blog/ace726.JPG" width="50%" />
 </details>
 
+<Details summary="this is it">asdf</Details>
+
+<CodeBlock language="python" title="asd">
+  print("hello")
+</CodeBlock>
 
 ### `Crypto-Arsenal`
 
-
-- [註冊連結](https://crypto-arsenal.io/?ref=BCA_qbb) (可以 Google 註冊) 
- - 如何用CA串接和自動化任何 `TradingView` 策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `TradingView` ([詳細教學](https://docs.crypto-arsenal.io/docs/tradingview/strategy/sync-by-position))
-- 如何用CA回測和實單策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `Technical Indicator` > `EMA`
+- [註冊連結](https://crypto-arsenal.io) (可以 Google 註冊)
+- 如何用 CA 串接和自動化任何 `TradingView` 策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `TradingView` ([詳細教學](https://docs.crypto-arsenal.io/docs/tradingview/strategy/sync-by-position))
+- 如何用 CA 回測和實單策略: 到 [Strategy](https://crypto-arsenal.io/strategies) > `New Strategy` > `Technical Indicator` > `EMA`
 
 ### `TradingView`
 
@@ -65,7 +76,6 @@ plot(ema10,  color=#f37f20)
 plot(ema20 , color = color.red)
 ```
 
-
 #### 7/19 簡易`EMA`策略
 
 ```python
@@ -91,6 +101,7 @@ if (shortCondition)
     strategy.close_all()
     strategy.entry("My Short Entry Id", strategy.short)
 ```
+
 ### `Python`
 
 #### 7/19 Superposition `EMA` Python 策略
@@ -108,7 +119,7 @@ class Strategy(StrategyBase):
     def __init__(self):
         # strategy property
         self.subscribed_books = {}
-        self.period = 60  *  30 
+        self.period = 60  *  30
         self.options = {}
         self.last_type = 'sell'
 
@@ -117,7 +128,7 @@ class Strategy(StrategyBase):
         self.sp1_period = 14
         self.sp2_period =14
         self.slow_period = 14
-    
+
         self.divide_quote = 0
         self.proportion = 0.2
 
@@ -128,7 +139,7 @@ class Strategy(StrategyBase):
     def trade(self, candles):
         exchange, pair, base, quote = CA.get_exchange_pair()
         ca_position = self.get_ca_position()
-        
+
         close_price_history = [candle['close'] for candle in candles[exchange][pair]]
         high_price_history = [candle['high'] for candle in candles[exchange][pair]]
         low_price_history = [candle['low'] for candle in candles[exchange][pair]]
@@ -155,10 +166,10 @@ class Strategy(StrategyBase):
         EMA_superposition_2 = talib.EMA(EMA_superposition_1_filled,self.sp2_period)
         EMA_superposition_2_filled = np.nan_to_num(EMA_superposition_2, nan=0)
         EMA_slow = talib.EMA(EMA_superposition_2_filled, self.slow_period)
-        
+
         if len(close_price_history) < self.slow_period + 1:
             return []
-        
+
         # current ema fast / slow
         curr_ema_fast = EMA_fast[-1]
         curr_ema_slow = EMA_slow[-1]
@@ -184,7 +195,7 @@ class Strategy(StrategyBase):
             # open short position
             if curr_ema_fast < curr_ema_slow and prev_ema_fast > prev_ema_slow:
                 signal = -1
-          
+
         # Sell short
         if signal == -1:
             self['is_shorting'] = 'true'
@@ -203,7 +214,7 @@ class Strategy(StrategyBase):
             else:
                 CA.place_order(exchange, pair, action='open_long',  percent=80)
 
-        
+
         # return current total position: -n 0, +n  where n is number of contracts
     def get_ca_position(self):
         exchange, pair, base, quote = CA.get_exchange_pair()
@@ -218,5 +229,3 @@ class Strategy(StrategyBase):
 
         return  0
 ```
-
-

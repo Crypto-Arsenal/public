@@ -1,6 +1,6 @@
 
 import React from 'react';
-export const Highlight = ({ children, color }) => (
+export const Highlight = ({ children, color="#ffba00" }) => (
     <span
         style={{
             backgroundColor: color,

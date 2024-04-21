@@ -18,13 +18,14 @@ import Image from '@theme/IdealImage';
 
 <Image img={require('/img/developer/tradingview/position/webhook.png')} />
 
-### Step 5:  Modify and Save the Alert Message
+### Step 5: Modify and Save the Alert Message
 
 <Image img={require('/img/developer/tradingview/position/message.png')} />
 
 Note that you replace connectorName and connectorToken
 
-***Template Here*** 👇
+**_Template Here_** 👇
+
 ```
 {
 "connectorName":"REPLACE_NAME",
@@ -44,7 +45,7 @@ Note that you replace connectorName and connectorToken
 }
 ```
 
-If the orders are too close to each other, use ```delaySeconds``` to delay placing orders
+If the orders are too close to each other, use `delaySeconds` to delay placing orders
 
 ```
 {
@@ -54,7 +55,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
 }
 ```
 
-### Step 6:  Copy the TradingView Python Code template 
+### Step 6: Copy the TradingView Python Code template
 
 ### [<u>Copy the code from this GitHub Repository</u> 👇](https://github.com/Crypto-Arsenal/tradingview-strategy-templates/blob/master/sync-tradingview.py)
 
@@ -66,7 +67,8 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
   <summary>Expand to see and copy the code</summary>
   <pre>
 
-  class Strategy(StrategyBase):
+```python
+class Strategy(StrategyBase):
 
     def __init__(self):
         self.period = 60
@@ -90,13 +92,16 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
         2. "noCompoundAvailableBalancePercent" 用單利去下%
         3. "totalBalancePercent" 用空倉時的資金固定去下%
         4. "fixedTotalBalance" 用固定初始本金去下 需要 size and price
-        ex. "entryOrder": {
+        ex.
+        "entryOrder": {
                 "value": 100,
                 "mode": "fixedTotalBalance",
                 "size": {{strategy.order.contracts}},
                 "price": {{strategy.order.price}},
             }
-        ===   
+        ===
+
+
 {
    "connectorName":"REPLACE_NAME",
    "connectorToken":"REPLACE_TOKEN",
@@ -112,6 +117,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
       "prev_size":{{strategy.prev_market_position_size}}
    }
 }
+
         """
 
         position = signal.get('position')
@@ -123,7 +129,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
         tv_order_value = entryOrder.get("value")
         tv_order_size = entryOrder.get("size")
         tv_order_price = entryOrder.get("price")
-        
+
         tv_position = self.get_position_from_size_and_side(position.get("size"), position.get("side"))
         tv_prev_position = self.get_position_from_size_and_side(position.get("prev_size"), position.get("prev_side"))
 
@@ -150,7 +156,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
             if tv_order_mode == "compoundAvailableBalancePercent":
                 ca_order_captial = None
                 tv_order_percent_of_capitial = tv_order_value
-                
+
                 newOrderAmount = dict(percent=tv_order_percent_of_capitial * int(CA.get_leverage()))   # default to 1
                 CA.log("CA開倉比例% " + str(tv_order_percent_of_capitial * int(CA.get_leverage())) + " \n CA下單金額%" + str(tv_order_percent_of_capitial * int(CA.get_leverage())) +  " \n CA入場本金$: " + str(self.ca_total_capital)  + " \n CA可用資金$: " + str(ca_available_capital))
             # 單利
@@ -169,14 +175,14 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
             elif tv_order_mode == "noCompoundAvailableBalanceNotional":
                 ca_order_captial = tv_order_value
                 # 不夠開
-                if ca_available_capital < tv_order_value: 
+                if ca_available_capital < tv_order_value:
                     ca_order_captial = ca_available_capital
                 notional = ca_order_captial * int(CA.get_leverage()) # default to 1
-                newOrderAmount = dict(notional = notional)   
+                newOrderAmount = dict(notional = notional)
                 CA.log( " \n CA下單金額$ " + str(notional) + " \n CA可用資金$: " + str(ca_available_capital))
             # 下固定 contract
             elif tv_order_mode == "FixedAssetTrade":
-                newOrderAmount = dict(amount = tv_order_value )   
+                newOrderAmount = dict(amount = tv_order_value )
                 # CA.log( " \n CA下單金額$ " + str(notional) + " \n CA可用資金$: " + str(ca_available_capital))
             # PPC  複利 加倉
             elif tv_order_mode == "totalBalancePercent":
@@ -184,7 +190,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
                 tv_order_percent_of_capitial = tv_order_value / 100
                  # 用CA空倉時的金額去下開或加倉的金額
                 notional = ca_order_captial * tv_order_percent_of_capitial * int(CA.get_leverage()) # default to 1
-                newOrderAmount = dict(notional = notional)   
+                newOrderAmount = dict(notional = notional)
                 CA.log("CA開倉比例% " + str(tv_order_percent_of_capitial * 100 * int(CA.get_leverage())) + " \n CA下單金額$ " + str(notional) +  " \n CA入場本金$: " + str(self.ca_total_capital)  + " \n CA可用資金$: " + str(ca_available_capital))
             elif tv_order_mode == "fixedTotalBalance":
                 ca_order_captial = self.ca_total_capital
@@ -195,11 +201,11 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
                 tv_order_percent_of_capitial = (tv_order_size * tv_order_price) / tv_order_value
                  # 用CA空倉時的金額去下開或加倉的金額
                 notional = ca_order_captial * tv_order_percent_of_capitial * int(CA.get_leverage()) # default to 1
-                newOrderAmount = dict(notional = notional)   
+                newOrderAmount = dict(notional = notional)
                 CA.log("CA開倉比例% " + str(tv_order_percent_of_capitial * 100 * int(CA.get_leverage())) + " \n CA下單金額$ " + str(notional) +  " \n CA入場本金$: " + str(self.ca_total_capital)  + " \n CA可用資金$: " + str(ca_available_capital))
             else:
                 return CA.log("⛔ Invalid tv_order_mode" + str(tv_order_mode))
-            
+
             # close short -> open long 不用管 prev_tv_position 因為我們知道一定會開多 但是要先確保 CA 倉位是對的
             if tv_position > 0 and ca_position < 0:
                 CA.log("先全關空倉在開多")
@@ -217,7 +223,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
             CA.log("newOrderAmount" + str(newOrderAmount))
             return CA.place_order(exchange, pair, action=action, **newOrderAmount)
         # 照比例關艙區
-        else: 
+        else:
             # 沒有倉位不用關
             if ca_position == 0:
                 return CA.log("沒有倉位不用關")
@@ -236,7 +242,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
 
             # 用TV前和後倉位去看關了多少 不行超過 1
             tv_order_percent_of_position = min((tv_prev_position - tv_position) / tv_prev_position, 1) * 100
-            
+
             CA.log("關倉比例% " + str(tv_order_percent_of_position))
 
             action = "close_long" if tv_prev_position > 0 else "close_short"
@@ -244,7 +250,7 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
 
     def trade(self, candles):
         pass
-    
+
     def on_order_state_change(self,  order):
         exchange, pair, base, quote = CA.get_exchange_pair()
         quote_balance = CA.get_balance(exchange, quote)
@@ -255,12 +261,12 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
             # 看CA的倉位已經用了多少%的本金去開了
             ca_position_percent_of_capital = (self.ca_total_capital - ca_available_capital) / self.ca_total_capital
             CA.log("? 現在CA倉位數量: " + str(ca_position) + " 本金%: " + str(ca_position_percent_of_capital * 100 *  int(CA.get_leverage()))+ " \n CA入場本金$: " + str(self.ca_total_capital)  + " \n CA可用資金$: " + str(ca_available_capital))
-            
+
       # 平倉時 設置新的開倉金
         if ca_position == 0:
             self.ca_total_capital = ca_available_capital
             CA.log('新的CA開倉本金: ' + str(self.ca_total_capital))
-            
+
     def get_position_from_size_and_side(self, positionSize, positionSide):
         if positionSide is None or positionSize is None:
             return None
@@ -285,11 +291,12 @@ If the orders are too close to each other, use ```delaySeconds``` to delay placi
             return -1 * abs(short_position.total_size)
 
         return  0
-    
+
+```
 
   </pre>
 </details>
 
-### Step 7:  Launch Simulation and Test
+### Step 7: Launch Simulation and Test
 
 <Image img={require('/img/developer/tradingview/position/simulation.png')} />
